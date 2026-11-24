@@ -297,6 +297,43 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 .ps .mailbar{display:flex;gap:10px;align-items:center;padding:12px;border-radius:14px;background:var(--bg2)}
 .ps .mailbar b{width:34px;height:34px;border-radius:10px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
 .ps .mailbar span{font-size:13px;color:var(--ink2);line-height:1.3}
+.ps .srcs{display:flex;flex-direction:column;gap:8px}
+.ps .src{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;background:var(--bg2);text-align:left;width:100%;font-size:15px;font-weight:500;color:var(--ink)}
+.ps .src i{width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font:600 11px 'Poppins',sans-serif;letter-spacing:.02em;color:var(--ink);flex:none;font-style:normal}
+.ps .src span{flex:1;min-width:0}.ps .src small{display:block;font-size:12px;font-weight:400;color:var(--ink3)}
+.ps .src em{font-style:normal;font-size:12px;font-weight:600;color:var(--ink3);white-space:nowrap}
+.ps button.src{cursor:pointer;transition:box-shadow .2s}.ps button.src:hover{box-shadow:inset 0 0 0 1.5px var(--ink4)}
+.ps .src.go{box-shadow:inset 0 0 0 2px var(--accent)}.ps .src.go em{color:var(--accent)}
+.ps .src.off{opacity:.6}
+.ps .rd .li{opacity:0;transform:translateY(6px);animation:rdi .4s var(--ease) forwards}.ps .rd .li:nth-child(2){animation-delay:.5s}.ps .rd .li:nth-child(3){animation-delay:1s}.ps .rd .li:nth-child(4){animation-delay:1.5s}
+@keyframes rdi{to{opacity:1;transform:none}}
+.ps .dis{font-size:12px;line-height:1.4;color:var(--ink2);background:var(--bg2);border-radius:12px;padding:10px 12px}
+.pg{position:relative;container-type:inline-size;background:#fff}
+.pg img,#audit .au-pp .pg img{display:block;width:100%;max-width:none;height:auto;margin:0;border-radius:0;box-shadow:none}
+.pg .f{position:absolute;font:600 1.45cqw/1 'Figtree',sans-serif;color:#1d2b6b;white-space:nowrap}
+.pg .f.x{font-size:1.6cqw}
+.pg .sg{position:absolute;font:italic 400 2.9cqw/1 'Snell Roundhand','Brush Script MT',cursive;color:#1d2b6b;white-space:nowrap;transform:translateY(-84%)}
+.pg .sg.new{animation:pen .9s var(--ease)}
+.pg .sg.void,.pg .ini.void{color:var(--ink4);text-decoration:line-through}
+.pg .vd{position:absolute;border:.3cqw solid #b42318;color:#b42318;font:600 1.6cqw/1.2 'Poppins',sans-serif;letter-spacing:.1em;padding:0 .8cqw;border-radius:.6cqw;transform:rotate(-8deg)}
+.pg .here{position:absolute;background:#ffd84d;color:#22222d;font:700 1.5cqw/1 'Figtree',sans-serif;padding:.6cqw 1.2cqw;border-radius:.6cqw;white-space:nowrap;box-shadow:0 .3cqw 1cqw rgba(34,34,45,.25);animation:herep 1.4s ease-in-out infinite}
+.pg .here.sm{font-size:1.2cqw;padding:.3cqw .8cqw}
+@keyframes herep{50%{transform:translateX(.6cqw)}}
+.pg .ini{position:absolute;font:italic 400 2.2cqw/1 'Snell Roundhand','Brush Script MT',cursive;color:#1d2b6b;transform:translateY(-35%)}
+.pg .dis{position:absolute;left:14.7%;width:70.6%;border:1px solid #c9c9cf;border-radius:.8cqw;padding:1cqw 1.4cqw;font:400 1.3cqw/1.4 'Figtree',sans-serif;color:#3a3a44;background:#fafafb}
+.pg .dis b{font-weight:700}
+.doc .crop{position:relative;overflow:hidden;aspect-ratio:6;border-radius:12px;border:1px solid var(--line);cursor:pointer}
+.doc .crop .pg{width:127.5%;margin:-95.42% 0 0 -14.58%}
+.doc .minis{display:flex;align-items:center;gap:8px;cursor:pointer}
+.doc .minis .pg{width:46px;border:1px solid var(--line);border-radius:3px;overflow:hidden;flex:none}
+.doc .minis>span{margin-left:6px;font-size:15px;font-weight:600;color:var(--ink)}
+.doc .minis:hover>span{text-decoration:underline}
+.doc .scanp{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.doc .scanp .pg{border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.doc .scanp .scan{position:absolute;left:-6px;right:-6px;top:0;height:3px;border-radius:3px;background:var(--ok);box-shadow:0 0 14px var(--ok);animation:scan 1.2s ease-in-out infinite alternate}
+@keyframes scan{to{top:100%}}
+.doc .srcg{display:flex;flex-wrap:wrap;gap:8px}.doc .srcg span{padding:6px 12px;border-radius:999px;background:var(--bg2);font-size:14px;font-weight:500;color:var(--ink2)}
+#audit .au-pp .pg{flex:none;width:100%;max-width:1000px;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(34,34,45,.12)}
 .ps .lock{font-size:13px;color:var(--ink2);background:var(--bg2);border-radius:12px;padding:10px 12px}
 .doc .mto{font-size:14px;color:var(--ink3)}
 .doc .dl{display:flex;flex-direction:column}
@@ -1594,7 +1631,7 @@ One place.</h1>
   const fdate=v=>new Date(v+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
   const TERMS=[['price','Purchase price','$'],['dep','Deposit','$'],['exp','Offer expires','d'],['close','Closing date','d']];
   const T0={price:2500000,dep:250000,exp:'2026-10-31',close:'2026-11-21'};
-  const fresh0=()=>({st:'draft',side:'buy',from:'buy',T:Object.assign({},T0),H:{price:[],dep:[],exp:[],close:[]},chg:[],pick:{},cv:{},round:1,depSet:false,log:[],min:2,bSig:'wait',sSig:'wait',bAt:'',sAt:'',fresh:'',docs:'',pend:{},need:false});
+  const fresh0=()=>({st:'pick',form:'',side:'buy',from:'buy',T:Object.assign({},T0),H:{price:[],dep:[],exp:[],close:[]},chg:[],pick:{},cv:{},round:1,depSet:false,log:[],min:2,bSig:'wait',sSig:'wait',bAt:'',sAt:'',fresh:'',docs:'',pend:{},need:false});
   const F=fresh0();
   const fv=(k,v)=>k==='price'||k==='dep'?money(v):fdate(v);
   const lab=k=>TERMS.find(t=>t[0]===k)[1];
@@ -1603,7 +1640,7 @@ One place.</h1>
   const ORDER=['draft','relay','reply','done','track','idreq','review','approve','closed'];
   const DATES=[['Oct 30','Deposit due','Buyer'],['Nov 6','Survey and sea trial','Buyer'],['Nov 10','Acceptance','Buyer'],['Nov 21','Closing','Both sides']];
   const BOAT='2019 Azimut 60';
-  const ACTOR={draft:'buy',bsign:'buy',done:null,declined:null,track:null,idreq:null,review:null,approve:null,closed:null};
+  const ACTOR={pick:'buy',read:'buy',draft:'buy',bsign:'buy',done:null,declined:null,track:null,idreq:null,review:null,approve:null,closed:null};
   const actor=st=>st==='relay'||st==='reply'?oth(F.from):ACTOR[st];
   function clock(){F.min+=3;const m=F.min;return '10:'+String(m).padStart(2,'0')+' AM'}
   function addLog(t){F.log.unshift({t,at:clock()})}
@@ -1625,10 +1662,10 @@ One place.</h1>
   }
   function clientScreen(){
     const LK='<div class="lockup"><img src="img/yachtway-docusign-lockup.png" alt="YachtWay and DocuSign"></div>';
-    if(F.st==='bsign')return `${LK}<p class="who">The buyer · prepared by your broker</p><h3>Sign your offer</h3><div class="tg">${TERMS.map(([k,l])=>`<div class="trm"><div class="tl"><span>${l}</span><b>${fv(k,F.T[k])}</b></div></div>`).join('')}</div><p class="note">Your signature sends it to the seller’s broker. No account needed.</p><div class="sp"></div><button class="btn pri" data-a="o-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
+    if(F.st==='bsign')return `${LK}<p class="who">The buyer · prepared by your broker</p><h3>${IY()?'Sign the IYBA agreement':'Sign your offer'}</h3><div class="tg">${TERMS.map(([k,l])=>`<div class="trm"><div class="tl"><span>${l}</span><b>${fv(k,F.T[k])}</b></div></div>`).join('')}</div><p class="note">Your signature sends it to the seller’s broker. No account needed.</p><div class="sp"></div>${iyCta()}<button class="btn pri" data-a="o-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
     const me=actor('reply'),c=SIDE[me],ks=Object.keys(F.pend);
     const list=TERMS.map(([k,l])=>{const x=k in F.pend;return `<div class="trm"><div class="tl"><span>${l}${x?'<em class="tag">Counter</em>':''}</span><span>${x?`<s>${fv(k,F.T[k])}</s>`:''}<b>${fv(k,x?F.pend[k]:F.T[k])}</b></span></div></div>`}).join('');
-    return `${LK}<p class="who">The ${c} · prepared by your broker</p><h3>${ks.length?`Sign your counter · ${ks.length} term${ks.length>1?'s':''}`:'Sign the agreed terms'}</h3><div class="tg">${list}</div><p class="note">${ks.length?`Your signature sends it to the ${SIDE[oth(me)]}’s broker.`:'Your signature makes it fully executed.'} No account needed.</p><div class="sp"></div><button class="btn pri" data-a="c-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
+    return `${LK}<p class="who">The ${c} · prepared by your broker</p><h3>${ks.length?`Sign your counter · ${ks.length} term${ks.length>1?'s':''}`:'Sign the agreed terms'}</h3><div class="tg">${list}</div><p class="note">${ks.length?`Your signature sends it to the ${SIDE[oth(me)]}’s broker.`:'Your signature makes it fully executed.'} No account needed.</p><div class="sp"></div>${iyCta()}<button class="btn pri" data-a="c-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
   }
   function screen(){
     if(ORDER.indexOf(F.st)>3)return postScreen();
@@ -1636,7 +1673,11 @@ One place.</h1>
     const done=`<div class="big-check"><svg viewBox="0 0 52 52"><path d="M14 27l8 8 16-17"/></svg></div><h3 style="text-align:center">Fully executed</h3>${row(BOAT,money(F.T.price))}<p class="note" style="text-align:center">${b?'Signed copy and audit trail saved to the deal.':'Both sides get the same signed copy.'}</p><div class="sp"></div><button class="btn sec" data-a="otp">Signed agreement PDF</button><button class="btn sec" data-a="audit">Audit trail PDF</button><button class="btn pri" data-a="track">See what happens next</button><button class="btn ter" data-a="reset">Run it again</button>`;
     let h;
     switch(F.st){
-      case'draft':h=b?`${k}<h3>Offer ready to send</h3><label class="pl">Purchase price${inp('price','t',F.T.price)}</label><label class="pl">Deposit${inp('dep','t',F.T.dep)}</label><div class="dts"><label class="pl">Offer expires${inp('exp','t',F.T.exp)}</label><label class="pl">Closing date${inp('close','t',F.T.close)}</label></div><p class="note">Type any terms. The buyer signs first. Then it goes to the seller’s broker.</p><div class="sp"></div><button class="btn pri" data-a="send">Send to the buyer for signing</button>`
+      case'pick':h=b?`${k}<h3>Choose your contract</h3><p class="note">Use the EasySign offer or import the form your office already uses.</p><div class="srcs">${SRC.map(([v,i,t,d,on])=>on?`<button class="src${v==='iyba'?' go':''}" data-a="form" data-v="${v}"><i>${i}</i><span>${t}<small>${d}</small></span><em>Select</em></button>`:`<div class="src off"><i>${i}</i><span>${t}<small>${d}</small></span><em>Upload</em></div>`).join('')}</div><div class="sp"></div>`
+        :`${k}<h3>No offer yet</h3>${wait('Waiting on the buyer side')}<div class="sp"></div>`;break;
+      case'read':h=b?`<p class="k">Importing</p><h3>Reading your IYBA form</h3><div class="lst rd"><div class="li"><span>IYBA_PSA_2.1.22.pdf<small>4 pages</small></span><em class="ok">Uploaded</em></div><div class="li"><span>Fields found<small>Buyer, seller, vessel, price, dates</small></span><em class="ok">26</em></div><div class="li"><span>Signatures and initials placed<small>Page 4 and every page footer</small></span><em class="ok">Done</em></div><div class="li"><span>Filled from the deal<small>Same names and terms as the offer</small></span><em class="ok">Ready</em></div></div><div class="sp"></div>${wait('Preparing the form')}`
+        :`${k}<h3>No offer yet</h3>${wait('Waiting on the buyer side')}<div class="sp"></div>`;break;
+      case'draft':h=b?`${k}<h3>${IY()?'IYBA form ready to send':'Offer ready to send'}</h3><label class="pl">Purchase price${inp('price','t',F.T.price)}</label><label class="pl">Deposit${inp('dep','t',F.T.dep)}</label><div class="dts"><label class="pl">Offer expires${inp('exp','t',F.T.exp)}</label><label class="pl">Closing date${inp('close','t',F.T.close)}</label></div><p class="note">Type any terms. The buyer signs first. Then it goes to the seller’s broker.</p><div class="sp"></div><button class="btn pri" data-a="send">Send to the buyer for signing</button><button class="btn ter" data-a="repick">Change contract</button>`
         :`${k}<h3>No offer yet</h3>${wait('Waiting on the buyer side')}<p class="note">The seller’s broker gets it the second it is sent.</p><div class="sp"></div>`;break;
       case'bsign':h=me?clientScreen():`${k}<h3>No offer yet</h3>${wait('The buyer is signing the offer')}<p class="note">The seller’s broker gets it once the buyer signs.</p><div class="sp"></div>`;break;
       case'relay':h=me?brokerScreen():`${k}<h3>${F.round>1?'Counter sent':'Offer sent'}</h3>${rows()}${wait(`With the ${SIDE[oth(F.from)]}’s broker`)}<div class="sp"></div>`;break;
@@ -1661,7 +1702,7 @@ One place.</h1>
     const P=money(F.T.price);
     if(F.st==='track')return `<div class="dh"><span class="k">Email to every party</span><span class="chip ok">Sent</span></div><h3>Your deal timeline</h3><p class="mto">To: Buyer, Seller, Buyer’s broker, Listing broker</p><div class="dl">${DATES.map(d=>`<div class="dr flash"><span class="d">${d[0]}</span><span>${d[1]}</span><em>Reminder on</em></div>`).join('')}</div><p class="dstat">Dates come from the signed agreement. A reminder goes out before each one.</p><div class="calx"><p>Export to your calendar for automated reminders</p><div class="cals"><span class="cal-c"><i><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="#fff"/><path d="M4 2h15v4H6v11H2V4a2 2 0 0 1 2-2z" fill="#4285f4"/><path d="M19 2h1a2 2 0 0 1 2 2v13h-3z" fill="#fbbc04"/><path d="M6 18h11v4H6z" fill="#34a853"/><path d="M2 17h4v5H4a2 2 0 0 1-2-2z" fill="#1967d2"/><path d="M17 17h5l-5 5z" fill="#ea4335"/><text x="12.3" y="15.2" text-anchor="middle" font-family="Poppins,Arial" font-weight="600" font-size="7.5" fill="#1a73e8">31</text></svg></i>Google</span><span class="cal-c"><i><svg viewBox="0 0 24 24"><rect x=".5" y=".5" width="23" height="23" rx="5.5" fill="#fff" stroke="#d9d9de"/><text x="12" y="8" text-anchor="middle" font-family="-apple-system,Arial" font-weight="600" font-size="5" fill="#ff3b30">SUN</text><text x="12" y="19.5" text-anchor="middle" font-family="-apple-system,Arial" font-weight="400" font-size="11.5" fill="#1d1d1f">31</text></svg></i>Apple</span><span class="cal-c"><i><svg viewBox="0 0 24 24"><rect x="7" y="3" width="16" height="18" rx="2" fill="#28a8ea"/><path d="M7 11l8 5 8-5v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z" fill="#0078d4"/><path d="M7 11l8 5 8-5" fill="none" stroke="#50d9ff" stroke-width=".8"/><rect x="1" y="6" width="12" height="12" rx="1.6" fill="#0a5ea8"/><ellipse cx="7" cy="12" rx="3" ry="3.6" fill="none" stroke="#fff" stroke-width="1.8"/></svg></i>Outlook</span></div></div>`;
     if(F.st==='idreq'){const r=F.docs==='recv'?'<em class="ok">Received</em>':F.docs==='req'?'<em>Requested</em>':'<em>Not sent</em>';
-      return `<div class="dh"><span class="k">Deal documents</span><span class="chip${F.docs==='recv'?' ok':''}">${F.docs==='recv'?'All received':'Checklist'}</span></div><h3>${BOAT}</h3><div class="dl"><div class="dr"><span class="d">Signed</span><span>Offer to Purchase</span><em class="ok">Fully executed</em></div><div class="dr flash"><span class="d">Buyer</span><span>Photo ID</span>${r}</div><div class="dr flash"><span class="d">Seller</span><span>Title</span>${r}</div><div class="dr"><span class="d">Buyer</span><span>Identity verification</span>${r.replace('Received','Verified')}</div></div><p class="dstat">Uploads land on the deal. No email attachments.</p>`}
+      return `<div class="dh"><span class="k">Deal documents</span><span class="chip${F.docs==='recv'?' ok':''}">${F.docs==='recv'?'All received':'Checklist'}</span></div><h3>${BOAT}</h3><div class="dl"><div class="dr"><span class="d">Signed</span><span>${IY()?'IYBA Purchase and Sale':'Offer to Purchase'}</span><em class="ok">Fully executed</em></div><div class="dr flash"><span class="d">Buyer</span><span>Photo ID</span>${r}</div><div class="dr flash"><span class="d">Seller</span><span>Title</span>${r}</div><div class="dr"><span class="d">Buyer</span><span>Identity verification</span>${r.replace('Received','Verified')}</div></div><p class="dstat">Uploads land on the deal. No email attachments.</p>`}
     const st={review:['Draft','Prepared by the listing broker. Not sent.'],approve:['Awaiting admin review','With your admin. The customer has not seen it.'],closed:['Approved · Sent','Approved by your admin. Sent to the buyer and the seller.']}[F.st];
     return `<div class="dh"><span class="k">Bill of Sale</span><span class="chip${F.st==='closed'?' ok':''}">${st[0]}</span></div><h3>${BOAT}</h3><div><div class="term"><span>Purchase price</span><span class="v"><b>${P}</b></span></div><div class="term"><span>Format</span><span class="v"><b>USCG compliant</b></span></div></div><div class="dl"><div class="dr"><span class="d">Broker</span><span>Prepared</span><em class="ok">Done</em></div><div class="dr flash"><span class="d">Admin</span><span>Review and approve</span>${F.st==='closed'?'<em class="ok">Approved</em>':F.st==='approve'?'<em>Reviewing</em>':'<em>Next</em>'}</div><div class="dr"><span class="d">Notary</span><span>Online notary</span><em class="ok">Ready</em></div></div><p class="dstat">${st[1]}</p>`;
   }
@@ -1671,6 +1712,8 @@ One place.</h1>
   }
   function docHtml(){
     if(ORDER.indexOf(F.st)>3)return postDoc();
+    if(F.st==='pick')return `<div class="dh"><span class="k">Contract</span><span class="chip">Not chosen</span></div><h3>${BOAT}</h3><p class="dstat">Start from the EasySign offer, or import the form your office already uses. Names, terms and signature lines fill in for you.</p><div class="srcg">${SRC.map(x=>`<span>${x[1]==='PDF'?'Any PDF':x[1]==='ES'?'EasySign':x[1]}</span>`).join('')}</div>`;
+    if(F.st==='read')return `<div class="dh"><span class="k">IYBA Purchase and Sale</span><span class="chip">Reading</span></div><h3>${BOAT}</h3><div class="scanp">${[1,2,3,4].map(n=>`<div class="pg"><img src="img/iyba-p-${n}.png" alt=""></div>`).join('')}<i class="scan"></i></div><p class="dstat">Finding fields, signature lines and initials on every page.</p>`;
     const D=F.st==='done',X=F.st==='declined',PV=F.st==='reply'?F.pend:F.st==='relay'?Object.fromEntries(Object.entries(F.cv).filter(([k])=>F.pick[k]==='c')):{};
     const term=([k,l])=>{const d=k in PV&&PV[k]!==F.T[k],old=F.H[k].slice(-2),chg=F.fresh==='terms'&&F.chg.includes(k)?' chg':'';
       const v=d?`<small>Draft</small><s>${fv(k,F.T[k])}</s><b class="draft">${fv(k,PV[k])}</b>`:`${old.map(x=>`<s>${fv(k,x)}</s>`).join('')}<b class="${chg}">${fv(k,F.T[k])}</b>`;
@@ -1680,19 +1723,40 @@ One place.</h1>
     const sName=F.side==='sell'?'J. Whitaker':'The seller';
     const status={draft:'Draft. Nobody has signed yet.',bsign:'Sent to the buyer for signing.',relay:`${F.round>1?'Counter signed by the '+SIDE[F.from]:'Signed by the buyer'}. The ${SIDE[oth(F.from)]}’s broker reviews each term.`,reply:Object.keys(F.pend).length?`The ${SIDE[oth(F.from)]}’s broker countered. The ${SIDE[oth(F.from)]} signs next.`:`Every term accepted. The ${SIDE[oth(F.from)]} signs next.`,done:'Signed by both sides. Audit trail attached.',declined:'Declined. Nothing is binding.'}[F.st];
     const chip=D?'<span class="chip ok">Fully executed</span>':X?'<span class="chip">Declined</span>':`<span class="chip">Round ${F.round}</span>`;
-    const bSt=F.st==='bsign'||F.st==='reply'&&oth(F.from)==='buy'?'now':F.bSig,sSt=F.st==='reply'&&oth(F.from)==='sell'?'now':F.sSig;
-    return `<div class="dh"><span class="k">Offer to Purchase</span>${chip}</div><h3>${BOAT}</h3>
+    const [bSt,sSt]=sst();
+    return `<div class="dh"><span class="k">${IY()?'IYBA Purchase and Sale':'Offer to Purchase'}</span>${chip}</div><h3>${BOAT}</h3>
       <div>${TERMS.map(term).join('')}</div>
-      <div class="sigs">${sig('Buyer',bSt,'Marcus Elling',F.bAt,F.fresh==='b')}${sig('Seller',sSt,sName,F.sAt,F.fresh==='s')}</div>
+      ${IY()?`<div class="crop" data-iy role="button" tabindex="0" aria-label="Open the full contract">${iyPg(4)}</div><div class="minis" data-iy role="button" tabindex="0">${[1,2,3,4].map(n=>iyPg(n)).join('')}<span>Open contract · 4 pages</span></div>`:''}
+      <div class="sigs"${IY()?' hidden':''}>${sig('Buyer',bSt,'Marcus Elling',F.bAt,F.fresh==='b')}${sig('Seller',sSt,sName,F.sAt,F.fresh==='s')}</div>
       <p class="dstat">${status}</p>`;
   }
+  // IYBA import: dealer-supplied form, filled from the deal (prototype data)
+  const IY=()=>F.form==='iyba';
+  const SRC=[['es','ES','EasySign Offer','Built in. Ready now',1],['iyba','IYBA','IYBA Purchase and Sale','Your office copy · PDF',1],['ybaa','YBAA','YBAA Purchase Agreement','Upload your copy',0],['cyba','CYBA','CYBA Purchase Agreement','Upload your copy',0],['myba','MYBA','MYBA Memorandum of Agreement','Upload your copy',0],['oth','PDF','Other','Any PDF contract you use',0]];
+  function sst(){return[F.st==='bsign'||F.st==='reply'&&oth(F.from)==='buy'?'now':F.bSig,F.st==='reply'&&oth(F.from)==='sell'?'now':F.sSig]}
+  const iyCta=()=>IY()?'<p class="dis">Contract wording supplied by your broker’s office. YachtWay did not review it. The parties are solely responsible for its content.</p><button class="btn sec" data-a="otp">Read the full contract</button>':'';
+  const PP=(x,y)=>`left:${(x/6.12).toFixed(2)}%;top:${(y/7.92).toFixed(2)}%`;
+  const OD='Oct 26, 2026';
+  const fz=(x,y,t,c)=>`<span class="f${c?' '+c:''}" style="${PP(x,y)}">${t}</span>`;
+  const ini=(x,y,st,t)=>st==='signed'||st==='void'?`<span class="ini${st==='void'?' void':''}" style="${PP(x,y)}">${t}</span>`:st==='now'?`<span class="here sm" style="${PP(x,y-2)}">Initial</span>`:'';
+  function sg4(x,st,name,at,nw){
+    let h=fz(x+26,497.5,name);
+    if(st==='signed'||st==='void')h+=`<span class="sg${st==='void'?' void':nw?' new':''}" style="${PP(x,491)}">${name}</span>`+(st==='void'?`<span class="vd" style="${PP(x+120,474)}">VOID</span>`:fz(x+25.4,522,`${OD} · ${at}`));
+    else if(st==='now')h+=`<span class="here" style="${PP(x,478)}">Sign here</span>`;
+    return h}
+  function iyPg(n){
+    const [b,s]=sst(),T=F.T;let h='';
+    if(n===1)h=[[85.8,98.4,'Marcus Elling'],[90.7,114.3,'Fort Lauderdale, FL'],[103.4,143.5,'USA'],[359,98.4,'J. Whitaker'],[363.1,114.3,'Miami, FL'],[375.8,143.5,'USA'],[117.4,159.4,'Halcyon'],[404,159.4,'Azimut'],[84.2,174.3,'60 Flybridge'],[390.8,174.3,'60 ft'],[75.5,189.4,'2019'],[415.3,189.4,'1298765'],[516,189.4,'USA'],[90.7,204.3,'XAX60012F819'],[408.8,204.3,'Twin MAN V8, 1,200 hp'],[115.2,219.1,'Kate Morgan, Harbor Yacht Sales'],[387.2,219.1,'Chris Patel'],[101.3,248.4,OD],[147,263.3,fdate(T.exp)],[139,278.2,'Nov 10, 2026'],[109.6,293.1,fdate(T.close)],[391.4,248.4,money(T.price)],[381.9,263.3,money(T.dep)],[493.1,278.2,'$0'],[362.3,293.1,money(T.price-T.dep)],[131.8,316.1,'Bahia Mar Marina, Fort Lauderdale, FL']].map(a=>fz(...a)).join('')+fz(323.8,191.6,'✕','x')+fz(264.2,352.6,'✕','x');
+    if(n<4){const y=n===1?731.4:750.9;h+=ini(72,y,b,'ME')+ini(517,y,s,'JW')}
+    else h+=sg4(90,b,'Marcus Elling',F.bAt,F.fresh==='b')+sg4(342,s,'J. Whitaker',F.sAt,F.fresh==='s')+`<div class="dis" style="top:${(684/7.92).toFixed(2)}%"><b>Dealer-supplied wording.</b> This contract text was supplied by Harbor Yacht Sales. YachtWay did not review it. Its content is the sole responsibility of the parties. Signed with EasySign · Deal YW-1001.</div>`;
+    return `<div class="pg"><img src="img/iyba-p-${n}.png" alt="IYBA agreement page ${n}">${h}</div>`}
   const flowEl=$('#flow');
   function chrome(){
     const g=$('#sideSeg');g.classList.toggle('sell',F.side==='sell');
     flowEl.classList.toggle('s-buy',F.side==='buy');flowEl.classList.toggle('s-sell',F.side==='sell');
     $$('#sideSeg button').forEach(x=>{x.classList.toggle('on',x.dataset.side===F.side);x.classList.toggle('turn',x.dataset.side===actor(F.st))});
     $('#doc').innerHTML=docHtml();F.fresh='';F.vNew=false;promises();
-    const a=actor(F.st),cap=x=>x[0].toUpperCase()+x.slice(1);$('#flowEye').textContent=F.st==='bsign'?'Buyer’s turn':F.st==='draft'||F.st==='relay'&&a==='buy'?'Buyer’s broker’s turn':F.st==='relay'?'Listing broker’s turn':a?cap(SIDE[a])+'’s turn':{done:'Fully signed',declined:'Declined'}[F.st]||'Closing';
+    const a=actor(F.st),cap=x=>x[0].toUpperCase()+x.slice(1);$('#flowEye').textContent=F.st==='bsign'?'Buyer’s turn':F.st==='draft'||F.st==='pick'||F.st==='read'||F.st==='relay'&&a==='buy'?'Buyer’s broker’s turn':F.st==='relay'?'Listing broker’s turn':a?cap(SIDE[a])+'’s turn':{done:'Fully signed',declined:'Declined'}[F.st]||'Closing';
   }
   function render(anim){
     const old=pscr.querySelector('.ps.act');
@@ -1725,6 +1789,10 @@ One place.</h1>
       <div class="sg">${[['Buyer','Marcus Elling',F.bAt],['Seller','J. Whitaker',F.sAt]].map(([w,n,t])=>`<div><span class="scr2">${n}</span><i></i><small>${w.toUpperCase()} · ${n}</small><small>DATE Oct 26, 2026 · ${t}</small></div>`).join('')}</div>
       <footer>Page 1 of 1</footer></article></div></div>`;
     AU.classList.add('open');AU.querySelector('.au-pp').scrollTop=0}
+  function iyOpen(){const D=F.st==='done'||ORDER.indexOf(F.st)>3;
+    AU.innerHTML=`<div class="au-p" role="dialog" aria-modal="true" aria-label="IYBA agreement"><div class="au-h"><div><p class="k">${D?'Signed agreement':'Live contract'} · demo deal YW-1001</p><h3>IYBA Purchase and Sale Agreement</h3><p class="note">${D?'Signed by both sides. 4 pages.':'Filled from the deal. Signatures update as each side signs. 4 pages.'}</p></div><div class="au-a"><button class="au-x" data-x aria-label="Close">&times;</button></div></div><div class="au-pp">${[1,2,3,4].map(n=>iyPg(n)).join('')}</div></div>`;
+    AU.classList.add('open');AU.querySelector('.au-pp').scrollTop=0}
+  $('#doc').addEventListener('click',e=>{if(e.target.closest('[data-iy]'))iyOpen()});
   const auClose=()=>AU.classList.remove('open');
   AU.addEventListener('click',e=>{if(e.target===AU||e.target.closest('[data-x]'))auClose()});
   ['wheel','touchstart','touchmove','touchend'].forEach(t=>AU.addEventListener(t,e=>e.stopPropagation(),{passive:true}));
@@ -1734,6 +1802,8 @@ One place.</h1>
     const a=e.target.closest('[data-a]');if(!a)return;e.stopPropagation();
     const me=actor(F.st);
     switch(a.dataset.a){
+      case'form':F.form=a.dataset.v;if(IY()){addLog('Imported the IYBA Purchase and Sale Agreement');flowGo('read');setTimeout(()=>{if(F.st==='read')flowGo('draft')},2600)}else flowGo('draft');break;
+      case'repick':F.form='';flowGo('pick');break;
       case'send':addLog(`Buyer’s broker sent the offer to the buyer for signing`);flowGo('bsign');break;
       case'o-sign':signBy('buy');F.from='buy';addLog(`Buyer signed. Offer sent: ${money(F.T.price)}`);flowGo('relay');break;
       case'pick':{const k=a.dataset.t;if(a.dataset.v==='c'){F.pick[k]='c';if(F.cv[k]==null)F.cv[k]=k==='price'?F.T.price+(me==='buy'?-75000:150000):k==='dep'?F.T.dep:addD(F.T[k],7)}else F.pick[k]='a';vSync();render(false);if(a.dataset.v==='c'){const i=pscr.querySelector(`.ps.act [data-f=c][data-t=${k}]`);if(i&&k!=='exp'&&k!=='close')i.focus()}break}
@@ -1749,7 +1819,7 @@ One place.</h1>
         addLog(`${me==='sell'?'Seller':'Buyer'} signed the counter. Sent to the ${SIDE[oth(me)]}’s broker`);flowGo('relay');break}
       case'decline':F.dBy=me;addLog(`${me==='sell'?'Seller':'Buyer side'} declined`);flowGo('declined');break;
       case'audit':auOpen();break;
-      case'otp':otpOpen();break;
+      case'otp':IY()?iyOpen():otpOpen();break;
       case'track':addLog('Timeline email sent to every party');flowGo('track');break;
       case'idreq':flowGo('idreq');break;
       case'send-req':F.docs='req';addLog('Requested photo ID and title');render(false);setTimeout(()=>{if(F.st!=='idreq')return;F.docs='recv';addLog('Photo ID and title received');render(false)},1600);break;
