@@ -282,6 +282,7 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 @keyframes stamp{from{transform:rotate(-10deg) scale(2);opacity:0}to{transform:rotate(-10deg) scale(1);opacity:1}}
 .doc .dstat{font-size:15px;color:var(--ink2)}
 .prom{display:flex;flex-wrap:wrap;gap:8px}
+.pbk{all:unset;display:inline-flex;align-items:center;gap:2px;margin:0 0 8px -4px;padding:4px 6px;border-radius:8px;font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer}.pbk:hover{background:var(--bg3);color:var(--ink)}.pbk svg{width:15px;height:15px}
 .prom span{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:var(--bg3);color:var(--ink3);font-size:14px;font-weight:500;transition:background .4s var(--ease),color .4s var(--ease)}
 .prom span i{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--ink4);display:inline-flex;align-items:center;justify-content:center;transition:all .4s var(--ease)}
 .prom span.on{background:var(--ok50);color:var(--ok)}
@@ -355,6 +356,81 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 @keyframes scan{to{top:100%}}
 /* import stage: own heading and steps, offer chrome hidden (space kept so the phone does not jump) */
 #flow:not(.importing) .impx,#flow.importing [data-k=flow_h],#flow.importing [data-k=flow_sub],#flow.importing #prom{display:none}#flow.importing #sideSeg{visibility:hidden}
+/* ID check (Plaid) + online notary */
+.iv,.nz{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:center}
+.iv-l,.nz-l{display:flex;flex-direction:column;gap:18px;max-width:520px}
+.iv-send{padding:20px;display:flex;flex-direction:column;gap:14px;text-align:left}
+.iv-doc{display:flex;gap:12px;align-items:center}.iv-doc .kic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex:none}.iv-doc .kic svg{width:22px;height:22px}
+.iv-doc b,.iv-res b{display:block;font-size:17px}.iv-doc span,.iv-res span{font-size:15px;color:var(--ink3)}
+.iv-tg{display:flex;justify-content:space-between;align-items:center;font-size:16px;padding:12px 14px;border-radius:12px;background:var(--bg2)}
+.iv-tg{cursor:pointer;user-select:none}.iv-sw{width:42px;height:26px;border-radius:13px;background:var(--bg3);position:relative;flex:none;transition:background .2s;background:#d1d1d6}.iv-tg[aria-checked=true] .iv-sw{background:#34c759}.iv-sw::after{content:'';position:absolute;top:3px;left:3px;transition:transform .2s;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}.iv-tg[aria-checked=true] .iv-sw::after{transform:translateX(16px)}
+.iv-go{height:48px;border:0;border-radius:12px;background:var(--ink);color:#fff;font:600 17px Figtree,sans-serif;cursor:pointer;transition:transform .15s,opacity .3s}.iv-go:active,.iv-go.pr{transform:scale(.97)}.iv-go.sent{opacity:.55}
+.iv-res{display:none;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--ok50);animation:ivIn .5s var(--ease)}.iv-res.on{display:flex}
+.iv-ok{width:22px;height:22px;border-radius:50%;background:#12b76a;color:#fff;display:inline-grid;place-items:center;flex:none}.iv-ok svg{width:13px;height:13px}
+.iv-steps,.nz-steps{list-style:none;display:flex;flex-direction:column;gap:4px}
+.iv-steps li,.nz-steps li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;cursor:pointer;opacity:.5;align-items:center;transition:opacity .3s,background .3s}
+.iv-steps li.on,.nz-steps li.on{opacity:1;background:var(--bg)}.iv-steps li.dn,.nz-steps li.dn{opacity:.85}
+.iv-steps i,.nz-steps i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--bg3);display:grid;place-items:center;font-weight:600;font-size:14px;flex:none}
+.iv-steps li.on i,.nz-steps li.on i{background:var(--ink);color:#fff}.iv-steps li.dn i,.nz-steps li.dn i{background:#12b76a;color:#fff}
+.iv-steps b,.nz-steps b{display:block;font-size:16px}.iv-steps span,.nz-steps span{font-size:14px;color:var(--ink3)}
+.iv-by{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink3)}.iv-by .iv-pl{height:18px}
+.iv-ph{height:600px}
+.iv-s{position:absolute;inset:0;padding:54px 24px 24px;display:flex;flex-direction:column;gap:12px;text-align:left;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+.iv-s.on{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.iv-s h4{font:500 22px/1.2 Poppins,sans-serif;letter-spacing:-.02em;color:#111}.iv-s p{font-size:15px;color:#3d3d45;line-height:1.4}
+.iv-dim{color:var(--ink3)!important}.iv-mid{flex:1;display:grid;place-items:center}
+.iv-from{font-size:13px!important;color:var(--ink3)!important}
+.iv-btn{margin-top:auto;height:48px;border-radius:10px;background:#111;color:#fff;display:grid;place-items:center;font-weight:600;font-size:16px}
+.iv-foot{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px!important;color:var(--ink3)!important}.iv-foot .iv-pl{height:13px}
+.iv-hero{display:grid;place-items:center;padding:8px 0}.iv-hero span{width:72%;transform:rotate(-6deg)}.iv-card{display:block;width:100%;height:auto}
+.iv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}.iv-ul li{padding-left:26px;position:relative}.iv-ul li::before{content:'';position:absolute;left:4px;top:5px;width:9px;height:9px;border-radius:50%;background:#111}
+.iv-opt{padding:14px;border:1.5px solid #e3e3e6;border-radius:10px;font-size:16px}.iv-opt.on{border-color:#111}
+.iv-vf{position:relative;margin:14px 0;padding:26px 14px;border-radius:16px;background:#ebedf0}
+.iv-vf::before{content:'';position:absolute;inset:12px;border:3px solid #111;border-radius:12px;-webkit-mask:linear-gradient(#000 0 0) top left/26px 26px no-repeat,linear-gradient(#000 0 0) top right/26px 26px no-repeat,linear-gradient(#000 0 0) bottom left/26px 26px no-repeat,linear-gradient(#000 0 0) bottom right/26px 26px no-repeat}
+.iv-vf .iv-card{transform:scale(.9) rotate(-3deg);opacity:.4;transition:transform .9s var(--ease),opacity .9s}
+.iv-s.on .iv-vf .iv-card{transform:scale(.92) rotate(0);opacity:1}
+.iv-scan{position:absolute;left:16px;right:16px;top:22px;height:3px;border-radius:2px;background:#12b76a;box-shadow:0 0 12px #12b76a;opacity:0}
+.iv-s.on .iv-scan{animation:ivScan 1.4s .7s ease-in-out 2}
+.iv-cap{display:flex;align-items:center;gap:8px;font-weight:600;opacity:0;transition:opacity .3s}.iv-s.got .iv-cap{opacity:1}
+.iv-fw{display:grid;place-items:center;flex:1}.iv-face{width:78%;height:auto}
+.iv-ring{stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transform-origin:100px 112px}.iv-s.on .iv-ring{transition:stroke-dashoffset 2.4s linear .3s;stroke-dashoffset:0}
+.iv-spin{width:44px;height:44px;border-radius:50%;border:4px solid #e3e6ea;border-top-color:#111;animation:ivRot .8s linear infinite;margin:30px 0 6px}
+.iv-ck{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:10px;font-size:16px}.iv-ck li{display:flex;align-items:center;gap:10px;opacity:.35;transition:opacity .3s}.iv-ck li .iv-ok{background:#d0d5dd}.iv-ck li.dn{opacity:1}.iv-ck li.dn .iv-ok{background:#12b76a}
+.iv-sc{position:relative;width:130px;height:130px;margin:6px auto 0}.iv-sc svg{width:100%;height:100%}.iv-sc b{position:absolute;inset:0;display:grid;place-items:center;font:600 40px Poppins,sans-serif;color:#111;padding-bottom:14px}.iv-sc span{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-size:13px;color:var(--ink3)}
+.iv-arc{stroke-dasharray:100;stroke-dashoffset:100}.iv-s.on .iv-arc{transition:stroke-dashoffset 1.4s var(--ease) .2s;stroke-dashoffset:6}
+.iv-pass{display:flex;align-items:center;justify-content:center;gap:6px;color:#067647!important;font-weight:700;font-size:16px!important}.iv-pass svg{width:16px;height:16px}
+.iv-s[data-v=done] h4{text-align:center}
+.iv-rows p{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:14px!important}.iv-rows b{color:#067647}
+@keyframes ivScan{0%{opacity:1;top:22px}100%{opacity:1;top:calc(100% - 26px)}}@keyframes ivRot{to{transform:rotate(360deg)}}@keyframes ivIn{from{opacity:0;transform:translateY(6px)}}
+.nz-lock{height:30px;width:auto;align-self:flex-start}
+.nz-eye{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}.nz-l h3{font-size:26px;line-height:1.2;margin-top:-10px}
+.nz-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.nz-facts p{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}.nz-facts b{display:block;font-size:15px}.nz-facts span{font-size:13px;color:var(--ink3)}
+.nz-r{width:min(540px,44vw);display:flex;flex-direction:column;gap:14px}
+.nz-stage{position:relative;aspect-ratio:3/2;border-radius:20px;border:1px solid var(--line);background:#fff;overflow:hidden;box-shadow:0 30px 70px -36px rgba(34,34,45,.4)}
+.nz-stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .4s}.nz-stage>img.on{opacity:1}
+.nz-idle{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:30px;text-align:center;background:var(--bg2);transition:opacity .4s}.nz-idle img{width:56px}.nz-idle b{font-size:19px}.nz-idle span{font-size:15px;color:var(--ink3);max-width:320px}.nz-stage.go .nz-idle{opacity:0}
+.nz-cap{min-height:24px;font-size:17px;font-weight:600;text-align:center}
+.nz-done{display:none;gap:12px;align-items:center;padding:14px 16px;border-radius:12px;background:#ecfdf3;border:1px solid #abefc6;font-size:16px;animation:ivIn .5s var(--ease)}.nz-done.on{display:flex}
+.nz-have{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.nz-have span{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:13px;color:var(--ink2)}.nz-have img{width:36px;height:36px}
+@media (max-width:899px){.iv,.nz{grid-template-columns:1fr;justify-items:center}.nz-r{width:100%}.nz-have{grid-template-columns:repeat(2,1fr)}}
+/* prefilled agreement wizard: mirrors the real PA and Offer steps */
+#sx .wz{display:grid;grid-template-columns:230px 1fr;gap:26px}
+#sx .wr{border-right:1px solid var(--line);padding-right:18px}
+#sx .wr p{margin:14px 0 6px;font-size:12px;font-weight:600;color:var(--ink4);text-transform:uppercase;letter-spacing:.05em}#sx .wr p:first-child{margin-top:0}
+#sx .wr button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;padding:8px;border-radius:10px;font:500 14px 'Figtree';color:var(--ink2);cursor:pointer;text-align:left}
+#sx .wr button i{width:22px;height:22px;flex:none;border-radius:50%;background:#ececf0;color:var(--ink2);font:600 12px/22px 'Poppins';text-align:center;font-style:normal}
+#sx .wr button.dn i{background:#34c759;color:#fff}#sx .wr button.on{background:#f5f5f7;color:var(--ink);font-weight:600}#sx .wr button.on i{background:var(--ink);color:#fff}
+#sx .wh{margin:0 0 14px;color:var(--ink3);font-size:15px}
+#sx .wp{border:1px solid var(--line);border-radius:14px;padding:4px 16px 16px;margin:0 0 14px}
+#sx .wp h5{font:600 15px 'Poppins';color:var(--ink);margin:14px 0 0}
+#sx .wz>*,#sx .wg>*{min-width:0}#sx .wg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 16px}#sx .wg .ww{grid-column:1/-1}
+#sx .wv{display:block;align-content:center;background:#fafafb;height:auto;min-height:56px;padding-top:8px;padding-bottom:8px;line-height:1.3;overflow-wrap:anywhere}#sx .ww .wv.tx{height:auto;min-height:44px;padding:10px 12px;white-space:normal;line-height:1.4}
+#sx .wv.ro{background:#f1f1f2;font-weight:600}
+#sx .wa{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}#sx .wa span{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font-weight:600;font-size:14px;color:var(--ink)}#sx .wa span b{font:600 11px 'Poppins';color:#fff;background:#d92d20;border-radius:4px;padding:2px 5px}
+#sx .wk{border:0;background:none;color:var(--ink2);font:600 15px 'Figtree';text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:13px 8px}
+@media (max-width:900px){#sx .wz{grid-template-columns:1fr}#sx .wr{border:0;padding:0;display:flex;gap:4px;overflow-x:auto}#sx .wr p{display:none}#sx .wr button{width:auto;flex:none}#sx .wg{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){#sx .wz{grid-template-columns:270px minmax(0,1fr);gap:34px}#sx .wr button{font-size:17px;padding:10px}#sx .wr button i{width:28px;height:28px;font-size:14px;line-height:28px}#sx .wr p{font-size:14px}#sx .wh{font-size:18px}#sx .wp{padding:6px 22px 20px;border-radius:18px}#sx .wp h5{font-size:19px;margin-top:18px}#sx .wg{gap:0 22px}#sx .ww .wv.tx{min-height:56px}#sx .wk{font-size:18px}#sx .wa span{font-size:16px}}
+@media (max-width:1500px){#sx .wg{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:1300px){#sx .wz{grid-template-columns:minmax(0,1fr);gap:16px}#sx .wr{border:0;padding:0 0 6px;display:flex;flex-wrap:wrap;gap:4px}#sx .wr p{display:none}#sx .wr button{width:auto;flex:none;font-size:15px;white-space:nowrap}}
 .doc .drop{all:unset;box-sizing:border-box;width:100%;display:flex;flex-direction:column;align-items:center;gap:16px;padding:44px 24px;border:2px dashed var(--line);border-radius:18px;cursor:pointer;text-align:center;font-size:15px;color:var(--ink3)}
 .doc .drop:hover,.doc .drop:focus-visible{border-color:var(--ink3);background:var(--bg2)}.doc .drop b{font-size:26px;font-weight:600;color:var(--ink)}
 .doc .dfile{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:16px;font-weight:500;color:var(--ink)}.doc .dfile i{font-style:normal;font-size:12px;font-weight:700;padding:4px 6px;border-radius:6px;background:var(--bg2)}.doc .dfile small{color:var(--ink3);font-size:14px}
@@ -383,7 +459,7 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 .orow .sg i.rv{color:var(--accent);background:var(--brand50)}
 .orow .sg i small{display:block;font-size:11px;font-weight:500;opacity:.85}.orow .sg i.op{color:#8a5a00;background:#fdf3dc}.orow .sg i{border-radius:10px;padding:4px 9px;line-height:1.3}
 .orow[hidden]{display:none}
-.keep{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.keep{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .keep .card .p{font-family:'Poppins',sans-serif;font-size:20px;font-weight:500}
 .keep .card span{color:var(--ink2);font-size:15px}
 .keep .card .ok{color:var(--ok);font-weight:600;font-size:14px;margin-top:auto}
@@ -508,11 +584,6 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 .free .pill{background:var(--ok50);color:var(--ok);font-weight:600}
 
 /* next + list */
-.ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.ncard{background:var(--bg2);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px}
-.ncard .p{font-size:clamp(20px,2.2vw,28px)}
-.ncard input{font:500 20px 'Poppins',sans-serif;color:var(--ink);border:0;border-bottom:2px dashed var(--line);background:transparent;padding:6px 0;outline:none;width:100%}
-.ncard input:focus{border-bottom-color:var(--accent)}
 #cal{position:fixed;inset:0;z-index:99;background:rgba(28,22,48,.28);display:none;align-items:center;justify-content:center;padding:16px}
 #cal.open{display:flex}
 .lin.sxd{text-align:left;cursor:pointer;display:flex;align-items:center}
@@ -536,8 +607,6 @@ h2{font-size:clamp(32px,5.2vw,68px);line-height:1.06}
 #cal .ok{background:#f1f1f2;color:var(--ink3)}
 #cal .ok.on{background:#4b0ea3;color:#fff}
 .ps .din{text-align:left;cursor:pointer}
-.ncard .ndt{font:500 20px 'Poppins',sans-serif;color:var(--ink);border-bottom:2px dashed var(--line);padding:6px 0;text-align:left;width:100%}
-.ncard .ndt:empty::before{content:'Pick a date';color:var(--ink4)}
 
 .lines{display:flex;flex-direction:column;gap:6px}
 .line{display:flex;gap:16px;align-items:baseline;border-bottom:2px solid var(--line);padding:14px 0}
@@ -551,6 +620,7 @@ body.edit [data-k]:not(.fill):focus{outline-color:var(--accent);background:var(-
 /* chrome */
 .bar{position:fixed;left:0;right:0;bottom:0;padding:14px var(--gutr) max(14px,env(safe-area-inset-bottom)) var(--gut);display:flex;align-items:center;gap:12px;z-index:20;pointer-events:none}
 .bar>*{pointer-events:auto}
+.nxt{margin-left:auto;height:44px;padding:0 18px 0 20px;border-radius:22px;background:#1c1c1e;color:#fff;border:0;font:500 15px Poppins,sans-serif;display:flex;align-items:center;gap:6px;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s,transform .35s var(--ease),visibility .35s}.nxt.on{opacity:1;visibility:visible;transform:none}.nxt.bk{padding:0 20px 0 14px}.nxt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .isteps{list-style:none;display:flex;gap:10px;flex-wrap:wrap;margin:0;padding:0}
 .isteps li{display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:15px;color:var(--ink3);transition:color .3s,border-color .3s}
 .isteps li i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--bg3);font-size:13px;font-weight:600;transition:background .3s,color .3s}
@@ -633,7 +703,7 @@ body.edit [data-k]:not(.fill):focus{outline-color:var(--accent);background:var(-
 .notes b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 
 @media (max-width:860px){
-  .cards,.ncards,.plans,.tiles{grid-template-columns:1fr 1fr}
+  .cards,.plans,.tiles{grid-template-columns:1fr 1fr}
   .flow,.vgrid,.dgrid,.arch{grid-template-columns:1fr}
   .keep{grid-template-columns:1fr 1fr}
   .bento{grid-template-columns:repeat(2,1fr)}.bt.w2{grid-column:span 1}.bt.w3,.bt.w4{grid-column:1/-1}
@@ -644,7 +714,7 @@ body.edit [data-k]:not(.fill):focus{outline-color:var(--accent);background:var(-
 @media (max-width:560px){
   .nd i{width:44px;height:44px}.nd i svg{width:20px;height:20px}.nd b{font-size:13px}.nd{gap:6px}.stage.after .nd{transform:translate(-50%,-22px)}
   .hcore{padding:12px 14px;border-radius:18px}.hcore .k{font-size:10px}.hcore b{font-size:15px;margin:2px 0 8px}.hcore em{font-size:12px}
-  .cards,.ncards,.plans,.tiles,.starts,.keep,.trust,.vplans{grid-template-columns:1fr}
+  .cards,.plans,.tiles,.starts,.keep,.trust,.vplans{grid-template-columns:1fr}
   .bento{grid-template-columns:1fr}.bt.w2,.bt.w3,.bt.w4{grid-column:auto}.bt.hero{display:flex}.bt.hero .bshot{margin:8px -22px -20px 0;width:calc(100% + 22px)}
   .orow{grid-template-columns:1fr 1fr}.orow .sg{grid-column:1/-1}
   .startc .sshot{height:130px}.vlogo{font-size:34px}.vlogo svg{width:40px;height:40px}
@@ -705,11 +775,11 @@ body.edit [data-k]:not(.fill):focus{outline-color:var(--accent);background:var(-
 #sx .tg span em{display:block;font-style:normal;font-weight:400;font-size:13px;color:var(--ink3);margin-top:2px}#sx .tg+.tg{padding-top:0}
 #sx .lt{border:1px solid var(--line);border-radius:14px;padding:4px 16px 16px;margin:0 0 14px;background:#fff}
 #sx .lf{display:block;font-size:13px;font-weight:600;color:#3c3c46;margin:14px 0 6px}
-#sx .rg{display:flex;gap:8px;flex-wrap:wrap}#sx .rg button{flex:1;min-width:84px;display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid #dcdcde;border-radius:10px;background:#fff;color:#3c3c46;font:500 14px 'Figtree';cursor:pointer}
+#sx .rg{display:flex;gap:8px;flex-wrap:wrap}#sxrp:not([hidden]){display:block;margin-bottom:20px}#sx .rg button{flex:1;min-width:84px;display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid #dcdcde;border-radius:10px;background:#fff;color:#3c3c46;font:500 14px 'Figtree';cursor:pointer}
 #sx .rg button:before{content:'';width:16px;height:16px;border-radius:50%;border:1.5px solid #c1c1c4;box-sizing:border-box;flex:none}
 #sx .rg button.on{border-color:#a6a6ab;background:#f1f1f2;color:#4b0ea3;font-weight:600}#sx .rg button.on:before{border:5px solid #4b0ea3}
 #sx .lt{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}#sx .lsum{grid-column:1/-1;margin:16px 0 0;padding:12px 14px;border-radius:10px;background:#f6f6f7;color:var(--ink2);font-size:15px}#sx .lsum b{color:var(--ink)}#sx .lpx{position:relative}#sx .lpx i{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:600;color:var(--ink3)}#sx .lpx .lin{padding-left:26px;font-weight:600}
-#sx .rg button{white-space:nowrap}@media (max-width:640px){#sx .rg{gap:6px}#sx .rg button{min-width:0;padding:0 8px;gap:6px;font-size:13px}#sx .lt{padding:4px 12px 14px;grid-template-columns:1fr}}
+#sx .rg button{white-space:nowrap;flex:1 0 auto}@media (min-width:900px) and (max-width:1399px){#sx .rg{gap:6px}#sx #sxlp .rg button{font-size:15px;padding:0 8px;gap:6px}}@media (max-width:640px){#sx .rg{gap:6px}#sx .rg button{min-width:0;padding:0 8px;gap:6px;font-size:13px}#sx .lt{padding:4px 12px 14px;grid-template-columns:1fr}}
 #sx .lin{width:100%;box-sizing:border-box;height:44px;border:1px solid #dcdcde;border-radius:10px;padding:0 12px;font:500 15px 'Figtree';color:var(--ink);background:#fff}
 #sx .lro{height:44px;display:flex;align-items:center;padding:0 12px;border-radius:10px;background:#f6f6f7;color:var(--ink);font-weight:600;font-size:15px}
 #sx .tg{display:flex;align-items:center;justify-content:space-between;padding:12px 0 14px;font-weight:600;color:var(--ink)}
@@ -1041,29 +1111,6 @@ body.edit [data-k]:not(.fill):focus{outline-color:var(--accent);background:var(-
   <button class="tbtn" id="notesBtn" title="Presenter notes (N)">Notes</button>
 </div>
 
-<!-- 0 start -->
-<section class="scene" id="start" data-note="Ask before you show anything: what is on your mind this week, closing a deal or pricing a boat? Click their answer. The other product follows after.">
-  <div class="wrap center">
-    <h2 class="in" data-k="start_h">Where do we start?</h2>
-    <div class="starts">
-      <button class="startc in d1" data-track="es"><div class="sshot"><svg class="eslogo" role="img" aria-label="EasySign" viewBox="0 0 609 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M391.38 85.0327V26.2823H406.828V31.1312C411.264 27.1469 416.752 25.1547 423.292 25.1547C427.878 25.1547 431.9 26.1696 435.358 28.1993C438.891 30.1539 441.635 32.8979 443.59 36.4312C445.544 39.8893 446.521 43.9488 446.521 48.6097V85.0327H431.073V50.865C431.073 47.031 429.983 44.024 427.803 41.8439C425.622 39.5886 422.653 38.4609 418.894 38.4609C416.263 38.4609 413.933 38.9871 411.903 40.0396C409.873 41.0169 408.182 42.4453 406.828 44.3247V85.0327H391.38Z" fill="currentColor"/>
-<path d="M354.736 109.164C350.226 109.164 345.866 108.676 341.656 107.698C337.446 106.796 333.649 105.481 330.266 103.752L335.679 91.7986C338.912 93.3773 342.069 94.5425 345.151 95.2943C348.234 96.0461 351.316 96.4219 354.398 96.4219C358.984 96.4219 362.442 95.4446 364.772 93.49C367.178 91.5355 368.381 88.6036 368.381 84.6944V80.0711C363.57 83.6044 358.194 85.371 352.256 85.371C346.693 85.371 341.656 84.0554 337.145 81.4242C332.71 78.7179 329.139 75.0718 326.432 70.4861C323.801 65.9003 322.486 60.8259 322.486 55.2628C322.486 49.6998 323.801 44.663 326.432 40.1524C329.139 35.6418 332.785 32.0709 337.371 29.4397C341.956 26.7334 347.068 25.3802 352.707 25.3802C355.563 25.3802 358.345 25.7937 361.051 26.6206C363.758 27.4476 366.276 28.6128 368.606 30.1163V26.2823H383.83V84.9199C383.83 92.6631 381.311 98.6396 376.274 102.85C371.313 107.059 364.133 109.164 354.736 109.164ZM354.624 72.2903C357.48 72.2903 360.074 71.8392 362.404 70.9371C364.735 69.9598 366.727 68.6067 368.381 66.8776V43.8736C366.727 42.2197 364.697 40.9417 362.292 40.0396C359.961 39.0623 357.443 38.5737 354.736 38.5737C351.504 38.5737 348.609 39.3254 346.053 40.829C343.497 42.2573 341.468 44.2495 339.964 46.8055C338.461 49.2863 337.709 52.1054 337.709 55.2628C337.709 58.4954 338.423 61.3897 339.851 63.9457C341.355 66.5017 343.385 68.5315 345.941 70.035C348.572 71.5385 351.466 72.2903 354.624 72.2903Z" fill="currentColor"/>
-<path d="M302.172 85.0327V26.2823H317.621V85.0327H302.172ZM309.84 19.2909C307.435 19.2909 305.367 18.4264 303.638 16.6973C301.909 14.9683 301.045 12.9009 301.045 10.4953C301.045 8.01447 301.909 5.94711 303.638 4.29323C305.367 2.56417 307.435 1.69965 309.84 1.69965C312.321 1.69965 314.388 2.56417 316.042 4.29323C317.771 5.94711 318.636 8.01447 318.636 10.4953C318.636 12.9009 317.771 14.9683 316.042 16.6973C314.388 18.4264 312.321 19.2909 309.84 19.2909Z" fill="currentColor"/>
-<path d="M264.75 86.1604C258.36 86.1604 252.121 84.9951 246.031 82.6646C239.942 80.259 234.529 76.8761 229.793 72.5158L239.153 60.7883C243.738 64.8478 248.136 67.7797 252.346 69.584C256.631 71.3882 261.142 72.2903 265.878 72.2903C269.186 72.2903 272.042 71.9144 274.448 71.1627C276.854 70.3357 278.695 69.1705 279.973 67.667C281.327 66.1634 282.003 64.3968 282.003 62.367C282.003 59.6607 281.026 57.5933 279.071 56.165C277.117 54.6614 273.771 53.4962 269.035 52.6693L253.361 49.9629C246.67 48.8353 241.558 46.4672 238.025 42.8587C234.567 39.2503 232.838 34.5893 232.838 28.8759C232.838 23.9895 234.078 19.742 236.559 16.1335C239.115 12.5251 242.686 9.78111 247.272 7.9017C251.933 5.94711 257.458 4.96982 263.848 4.96982C269.637 4.96982 275.388 5.94711 281.101 7.9017C286.89 9.85629 292.002 12.5626 296.437 16.0208L287.641 28.1993C279.372 21.8845 271.065 18.7271 262.72 18.7271C259.789 18.7271 257.233 19.103 255.052 19.8548C252.872 20.6065 251.181 21.659 249.978 23.0122C248.85 24.2902 248.287 25.8313 248.287 27.6355C248.287 30.0412 249.151 31.9206 250.88 33.2737C252.609 34.5517 255.504 35.529 259.563 36.2056L274.448 38.6864C282.341 39.9644 288.243 42.4829 292.152 46.2417C296.061 49.9253 298.016 54.8118 298.016 60.9011C298.016 66.0131 296.663 70.4861 293.956 74.3201C291.25 78.0789 287.378 81.0108 282.341 83.1157C277.38 85.1455 271.516 86.1604 264.75 86.1604Z" fill="currentColor"/>
-<path d="M180.724 109.277C179.371 109.277 178.055 109.202 176.777 109.052C175.574 108.976 174.559 108.864 173.732 108.713V95.4071C175.236 95.7078 177.04 95.8581 179.145 95.8581C184.783 95.8581 188.693 93.1893 190.873 87.8518L191.775 85.5965L168.884 26.2823H185.911L200.57 66.3138L217.147 26.2823H233.836L206.772 89.7688C204.743 94.5049 202.525 98.3013 200.119 101.158C197.714 104.015 194.932 106.082 191.775 107.36C188.693 108.638 185.009 109.277 180.724 109.277Z" fill="currentColor"/>
-<path d="M147.183 86.1604C141.77 86.1604 136.771 85.4838 132.185 84.1306C127.599 82.7022 123.615 80.6725 120.232 78.0413L127.9 67.7797C131.283 70.035 134.515 71.7265 137.598 72.8541C140.755 73.9818 143.875 74.5456 146.957 74.5456C150.415 74.5456 153.159 73.9818 155.189 72.8541C157.294 71.6513 158.346 70.1102 158.346 68.2308C158.346 66.7272 157.745 65.5244 156.542 64.6223C155.414 63.7202 153.573 63.0812 151.017 62.7053L139.74 61.0138C133.876 60.1117 129.441 58.2323 126.434 55.3756C123.427 52.4437 121.923 48.6097 121.923 43.8736C121.923 40.0396 122.901 36.7694 124.855 34.0631C126.885 31.2816 129.704 29.139 133.312 27.6355C136.996 26.0568 141.356 25.2675 146.393 25.2675C150.678 25.2675 154.851 25.8689 158.91 27.0717C163.045 28.2745 166.916 30.1163 170.525 32.5972L163.082 42.6332C159.85 40.6034 156.768 39.1375 153.836 38.2354C150.904 37.3333 147.934 36.8822 144.927 36.8822C142.146 36.8822 139.89 37.4084 138.161 38.4609C136.507 39.5134 135.681 40.9042 135.681 42.6332C135.681 44.2119 136.282 45.4523 137.485 46.3544C138.688 47.2566 140.755 47.8956 143.687 48.2714L154.851 49.9629C160.714 50.7898 165.187 52.6693 168.27 55.6011C171.352 58.4578 172.893 62.1791 172.893 66.7648C172.893 70.5237 171.765 73.869 169.51 76.8009C167.255 79.6576 164.21 81.9505 160.376 83.6795C156.542 85.3334 152.144 86.1604 147.183 86.1604Z" fill="currentColor"/>
-<path d="M85.8738 86.0476C81.6639 86.0476 77.9427 85.2958 74.7101 83.7923C71.4775 82.2136 68.9591 80.0711 67.1549 77.3647C65.3506 74.6584 64.4485 71.5385 64.4485 68.0052C64.4485 62.367 66.5535 58.0068 70.7633 54.9246C75.0484 51.7671 80.9121 50.1884 88.3546 50.1884C93.4666 50.1884 98.2779 50.9778 102.788 52.5565V48.2714C102.788 44.8885 101.736 42.3325 99.6311 40.6034C97.5261 38.8744 94.4439 38.0099 90.3844 38.0099C87.9036 38.0099 85.2348 38.4233 82.3781 39.2503C79.5214 40.002 76.2136 41.2049 72.4548 42.8587L66.8166 31.4695C71.4775 29.3646 75.9129 27.7859 80.1228 26.7334C84.4079 25.6809 88.6929 25.1547 92.978 25.1547C100.871 25.1547 106.998 27.0717 111.359 30.9057C115.794 34.6645 118.012 40.002 118.012 46.9183V85.0327H102.788V80.8604C100.383 82.6646 97.7893 83.9802 95.0077 84.8072C92.2262 85.6341 89.1816 86.0476 85.8738 86.0476ZM79.1079 67.667C79.1079 69.9222 80.0852 71.7265 82.0398 73.0797C83.9944 74.3577 86.588 74.9967 89.8206 74.9967C92.3766 74.9967 94.7446 74.6959 96.9247 74.0945C99.1048 73.4179 101.059 72.4407 102.788 71.1627V62.5925C100.909 61.8408 98.9545 61.277 96.9247 60.9011C94.895 60.5252 92.7148 60.3372 90.3844 60.3372C86.8511 60.3372 84.0696 61.0138 82.0398 62.367C80.0852 63.645 79.1079 65.4117 79.1079 67.667Z" fill="currentColor"/>
-<path d="M0 85.0327V6.09747H60.6674V20.3058H16.3509V38.3482H45.5569V52.1054H16.3509V70.8244H61.1184V85.0327H0Z" fill="currentColor"/>
-<path d="M586.313 1.26342C588.05 -0.421141 590.812 -0.421141 592.549 1.26342L606.871 15.1511C607.74 15.9946 608.232 17.1544 608.232 18.366C608.232 19.5777 607.74 20.7383 606.871 21.5818L549.622 77.0964C548.789 77.9037 547.675 78.3561 546.515 78.3591L532.155 78.3972C530.963 78.4003 529.819 77.9276 528.976 77.0847C528.133 76.2418 527.661 75.0979 527.665 73.906L527.704 59.9802C527.707 58.7729 528.197 57.6176 529.064 56.7771L586.313 1.26342ZM536.655 61.8923L536.633 69.4275L544.684 69.406L597.319 18.366L589.43 10.7165L536.655 61.8923Z" fill="currentColor"/>
-<path d="M577.699 14.045C579.421 12.2696 582.257 12.2265 584.032 13.9483L593.786 23.4063C595.562 25.1281 595.606 27.9636 593.884 29.7393C592.162 31.515 589.327 31.5589 587.551 29.8369L577.796 20.378C576.021 18.656 575.978 15.8205 577.699 14.045Z" fill="currentColor"/>
-<path d="M508.147 29.5527C520.829 17.5694 542.404 19.9582 559.891 30.9296C561.987 32.2442 562.62 35.0082 561.305 37.1035C559.991 39.1987 557.227 39.831 555.132 38.5165C539.047 28.4249 522.557 28.2605 514.3 36.0634C509.348 40.7428 507.461 48.0294 509.179 56.6845C510.897 65.3463 516.202 74.953 524.947 83.2167C530.116 88.1014 535.708 91.5191 540.295 93.707C542.584 94.7993 544.586 95.5673 546.111 96.0527C547.817 96.5957 548.514 96.6513 548.388 96.6513C550.861 96.6513 552.866 98.6563 552.866 101.13C552.866 103.603 550.861 105.608 548.388 105.608C547.007 105.608 545.154 105.148 543.394 104.588C541.453 103.97 539.071 103.047 536.438 101.791C531.179 99.2821 524.768 95.3707 518.796 89.7275C508.918 80.3936 502.528 69.1885 500.392 58.4277C498.256 47.6601 500.357 36.9138 508.147 29.5527ZM570.993 45.6523C572.816 43.9807 575.65 44.1035 577.321 45.9267C584.779 54.0613 590.463 62.6584 592.689 70.6904C593.815 74.7515 594.112 78.8745 593.102 82.7724C592.074 86.7421 589.765 90.1683 586.226 92.8437C580.387 97.2585 573.873 96.6786 568.574 94.6103C563.374 92.5805 558.722 88.9288 555.495 85.9833C553.668 84.3159 553.539 81.4831 555.206 79.6562C556.873 77.8293 559.706 77.6999 561.533 79.3671C564.454 82.0329 568.144 84.8274 571.831 86.2665C575.419 87.6671 578.338 87.5792 580.825 85.6992C582.843 84.1734 583.937 82.434 584.431 80.5253C584.945 78.5448 584.887 76.0758 584.057 73.083C582.374 67.0067 577.747 59.6457 570.719 51.9794C569.047 50.1563 569.17 47.3238 570.993 45.6523Z" fill="currentColor"/>
-</svg></div><span class="eyebrow" data-k="start_es_eye">EasySign V2</span><b data-k="start_es_h">Close the deal</b><span class="ssub" data-k="start_es_s">Offer, counter, sign, close. One place.</span></button>
-      <button class="startc in d2" data-track="vato"><div class="sshot"><span class="vlogo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 12 19l8.5-10.5"/><path d="M8 8.5 12 13.5l4-5"/><circle cx="12" cy="4.75" r="1.25" fill="currentColor" stroke="none"/></svg>VATO</span></div><span class="eyebrow" data-k="start_v_eye">VATO</span><b data-k="start_v_h">Price the boat</b><span class="ssub" data-k="start_v_s">Live asking prices for any model.</span></button>
-    </div>
-  </div>
-</section>
-
 <!-- 1 hero -->
 <section class="scene" id="hero" data-note="Open on the result, not on us. Say the line, pause, let the screen land. No intro slide about YachtWay.">
   <div class="wrap center">
@@ -1146,8 +1193,63 @@ One place.</h1>
     <div class="keep in d2">
       <div class="card kc" data-doc="Listing Agreement" role="button" tabindex="0"><span class="kic" style="background:#0a84ff;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v9.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M13.378 15.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg></span><b class="p">Listing Agreement</b><span>Send, sign, store.</span><ul class="qs"><li>Automated renewal reminders</li><li>Vessel history report</li><li>Request documents from the seller</li></ul><b class="ok">Works as it does today</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
       <div class="card kc" data-doc="Purchase Agreement" role="button" tabindex="0"><span class="kic" style="background:#34c759;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span><b class="p">Purchase Agreement</b><span>Your own form, on every deal.</span><ul class="qs"><li>Vessel acceptance</li><li>Closing statements</li><li>Request documents</li><li>Send any document for signing</li></ul><b class="ok">Works as it does today</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
-      <div class="card kc" data-doc="Offer to Purchase" role="button" tabindex="0"><span class="kic" style="background:#5856d6;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg></span><b class="p">Offers and counters</b><span>Now one click per round.</span><b class="ok">Works as it does today</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
       <div class="card kc" data-doc="Sale Document" role="button" tabindex="0"><span class="kic" style="background:#ff375f;color:#fff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path fill-rule="evenodd" d="M10.58 21.41 C10.50 21.40 10.17 21.29 9.84 21.17 C9.52 21.05 9.23 20.95 9.21 20.95 C9.18 20.95 9.05 20.87 8.91 20.77 C8.77 20.68 8.51 20.55 8.34 20.48 C8.02 20.36 6.95 19.67 6.55 19.31 C6.43 19.21 6.22 19.05 6.10 18.96 C5.80 18.76 4.87 17.79 4.55 17.35 C4.41 17.16 4.27 17.00 4.25 17.00 C4.14 17.00 3.10 15.30 2.96 14.90 C2.91 14.75 2.80 14.49 2.71 14.32 C2.63 14.16 2.54 13.90 2.50 13.75 C2.47 13.60 2.38 13.30 2.32 13.09 C2.12 12.45 2.05 11.94 2.05 11.03 C2.05 10.14 2.10 9.82 2.29 9.30 C2.35 9.15 2.42 8.93 2.45 8.82 C2.48 8.70 2.58 8.50 2.67 8.36 C2.76 8.23 2.89 8.03 2.94 7.91 C3.10 7.60 4.09 6.63 4.49 6.39 C5.00 6.10 5.16 6.03 5.93 5.79 L6.62 5.58 L7.75 5.58 C8.86 5.58 8.88 5.59 9.35 5.74 C9.61 5.82 10.01 5.93 10.25 5.97 C10.61 6.04 11.34 6.33 11.87 6.61 C12.31 6.85 12.36 6.86 12.54 6.83 C12.70 6.80 13.04 6.48 15.28 4.25 C17.07 2.46 17.88 1.68 18.02 1.62 C18.26 1.52 18.67 1.52 18.82 1.62 C18.98 1.72 21.48 4.22 21.73 4.52 C21.91 4.75 21.92 4.79 21.92 5.07 C21.92 5.32 21.89 5.43 21.78 5.63 C21.69 5.78 20.79 6.72 19.33 8.19 C18.06 9.46 17.01 10.56 16.98 10.63 C16.93 10.80 16.99 10.95 17.24 11.26 C17.63 11.75 17.94 12.18 18.05 12.40 C18.11 12.53 18.21 12.69 18.26 12.76 C18.31 12.84 18.41 13.04 18.48 13.21 C18.55 13.38 18.68 13.63 18.76 13.76 C18.90 13.98 19.10 14.64 19.29 15.45 C19.41 16.00 19.34 16.69 19.10 17.39 C18.99 17.71 18.84 18.05 18.77 18.15 C18.59 18.41 17.87 19.13 17.61 19.30 C17.13 19.62 15.95 19.74 15.11 19.55 C14.23 19.35 13.25 18.76 12.33 17.89 C11.87 17.45 11.79 16.91 12.13 16.46 C12.30 16.24 12.59 16.10 12.89 16.10 C13.11 16.10 13.18 16.13 13.46 16.33 C13.63 16.46 13.87 16.65 13.98 16.75 C14.30 17.06 14.85 17.40 15.20 17.53 C15.38 17.59 15.61 17.68 15.71 17.72 C16.01 17.85 16.20 17.82 16.55 17.61 C17.16 17.25 17.50 16.58 17.44 15.88 C17.39 15.28 16.76 13.88 16.25 13.20 C16.18 13.10 16.06 12.92 15.98 12.79 C15.83 12.52 15.54 12.30 15.35 12.30 C15.24 12.30 14.83 12.69 13.29 14.22 C11.85 15.65 11.31 16.16 11.12 16.25 C10.88 16.37 10.84 16.38 9.48 16.39 C8.71 16.40 8.01 16.39 7.92 16.38 C7.72 16.34 7.28 16.00 7.18 15.80 C7.11 15.68 7.10 15.40 7.10 14.18 L7.10 12.70 L7.23 12.44 C7.33 12.24 7.77 11.76 8.92 10.60 C9.77 9.73 10.51 9.00 10.56 8.96 C10.72 8.84 10.86 8.56 10.84 8.39 C10.82 8.18 10.61 8.03 10.20 7.95 C10.02 7.92 9.76 7.84 9.61 7.77 C9.17 7.58 8.41 7.49 7.48 7.51 C6.63 7.54 6.66 7.53 5.85 7.87 C5.47 8.03 5.38 8.09 5.03 8.46 C4.58 8.92 4.49 9.07 4.23 9.63 C4.08 9.98 4.04 10.13 4.00 10.59 C3.92 11.36 4.00 12.25 4.18 12.67 C4.25 12.84 4.37 13.20 4.45 13.48 C4.58 13.97 4.79 14.39 5.14 14.89 C5.23 15.02 5.36 15.22 5.44 15.34 C5.92 16.11 6.85 17.15 7.48 17.62 C7.64 17.74 7.94 17.96 8.13 18.12 C8.33 18.27 8.61 18.45 8.76 18.53 C8.90 18.60 9.09 18.72 9.18 18.78 C9.26 18.85 9.46 18.94 9.60 18.99 C9.75 19.04 9.98 19.15 10.11 19.24 C10.27 19.33 10.48 19.41 10.69 19.45 C11.22 19.54 11.32 19.59 11.64 19.92 C11.94 20.23 11.95 20.25 11.95 20.49 C11.95 20.71 11.92 20.78 11.75 20.99 C11.42 21.42 11.18 21.50 10.58 21.41 Z M10.52 14.20 C10.68 14.06 12.31 12.44 14.15 10.60 C17.33 7.42 17.50 7.24 17.50 7.07 C17.50 6.84 17.45 6.75 17.10 6.40 C16.75 6.05 16.66 6.00 16.43 6.00 C16.26 6.00 16.08 6.17 12.70 9.55 C10.74 11.51 9.12 13.16 9.10 13.23 C9.03 13.40 9.04 14.07 9.11 14.22 C9.19 14.40 9.33 14.44 9.81 14.45 L10.25 14.45 L10.52 14.20 Z"/></svg></span><b class="p">QuickSign</b><span>Any document, signed fast.</span><ul class="qs"><li>Send any document</li><li>Set the signing order</li><li>Place each signature</li></ul><b class="ok">Works as it does today</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      <div class="card kc" data-go="docreq" role="button" tabindex="0"><span class="kic" style="background:#ff9f0a;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><b class="p">Secure Doc Center</b><span>Ask for documents on any deal.</span><ul class="qs"><li>Anyone uploads from a link</li><li>No account needed</li><li>Accept each file or ask again</li></ul><b class="ok">Built in</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      <div class="card kc" data-go="notary" role="button" tabindex="0"><span class="kic" style="background:#30b0c7;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 22h14"/><path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z"/><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"/></svg></span><b class="p">Online Notary</b><span>Notarized on video, from anywhere.</span><ul class="qs"><li>Licensed notary, live on video</li><li>About 20 minutes</li><li>The seal is added on the call</li></ul><b class="ok">With OneNotary</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      <div class="card kc" data-go="idv" role="button" tabindex="0"><span class="kic" style="background:#1c1c1e;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M14 10h4"/><path d="M14 14h4"/></svg></span><b class="p">Photo ID</b><span>Every signer, verified.</span><ul class="qs"><li>ID scan, front and back</li><li>Selfie with a face match</li><li>A score before anyone signs</li></ul><b class="ok">With Plaid</b><span class="kopen">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene gray" id="idv" data-note="Press Send. Then watch the buyer side: the email, the Plaid check, the ID scan, the selfie, the score. Tap any step on the left to jump. The result lands on the deal before anyone signs.">
+  <div class="wrap">
+    <p class="eyebrow in" data-k="idv_eye">Photo ID</p>
+    <h2 class="in d1" data-k="idv_h">Every signer, verified.<br><span class="muted2">Before they sign.</span></h2>
+    <div class="iv in d2">
+      <div class="iv-l">
+        <div class="card iv-send">
+          <div class="iv-doc"><span class="kic" style="background:#34c759;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span><div><b>Purchase Agreement · YW-1001</b><span>$150,000 · Buyer Marcus Elling</span></div></div>
+          <div class="iv-tg" id="ivTg" role="switch" aria-checked="false" tabindex="0"><span>Photo ID check for every signer</span><i class="iv-sw" aria-hidden="true"></i></div>
+          <button class="iv-go" id="ivGo">Send for signing</button>
+          <div class="iv-res" id="ivRes"><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Marcus Elling · ID verified</b><span>Score 94 of 100 · Pass</span></div></div>
+        </div>
+        <ol class="iv-steps" id="ivSteps"><li data-ph="1"><i>1</i><div><b>Send the Purchase Agreement</b></div></li><li data-ph="2"><i>2</i><div><b>The buyer scans their ID</b></div></li><li data-ph="3"><i>3</i><div><b>Then a selfie</b></div></li><li data-ph="4"><i>4</i><div><b>You get the score</b></div></li></ol>
+        <p class="iv-by">Identity check by <img class="iv-pl" src="img/plaid-logo.svg" alt="Plaid"></p>
+      </div>
+      <div class="phone iv-ph"><div class="scr" id="ivScr">
+        <div class="iv-s" data-v="wait"><div class="iv-mid"><p class="iv-dim">Buyer’s phone</p></div></div>
+        <div class="iv-s" data-v="mail"><p class="iv-from">EasySign · now</p><h4>Sign the Purchase Agreement</h4><p>Marcus, your broker sent the Purchase Agreement for YW-1001.</p><p>First, a quick photo ID check. It takes about 2 minutes.</p><span class="iv-btn">Verify and sign</span></div>
+        <div class="iv-s" data-v="intro"><div class="iv-hero"><span><svg class="iv-card" viewBox="0 0 320 200" aria-hidden="true"><rect x="1" y="1" width="318" height="198" rx="14" fill="#f4f7fb" stroke="#c9d3e0"/><rect x="1" y="1" width="318" height="40" rx="14" fill="#2b4a7a"/><rect x="1" y="27" width="318" height="14" fill="#2b4a7a"/><text x="20" y="28" fill="#fff" font-family="Figtree,Arial" font-size="15" font-weight="700" letter-spacing="2">DRIVER LICENSE</text><text x="300" y="28" fill="#cfe0f5" font-family="Figtree,Arial" font-size="12" text-anchor="end">FLORIDA</text><rect x="20" y="58" width="86" height="108" rx="8" fill="#dde3ea"/><circle cx="63" cy="96" r="20" fill="#a9b4c2"/><path d="M30 166c4-26 20-36 33-36s29 10 33 36z" fill="#a9b4c2"/><text x="124" y="74" fill="#72808f" font-family="Figtree,Arial" font-size="10">NAME</text><text x="124" y="91" fill="#1d2633" font-family="Figtree,Arial" font-size="16" font-weight="700">MARCUS ELLING</text><text x="124" y="114" fill="#72808f" font-family="Figtree,Arial" font-size="10">DOB</text><text x="124" y="129" fill="#1d2633" font-family="Figtree,Arial" font-size="13">03/14/1979</text><text x="218" y="114" fill="#72808f" font-family="Figtree,Arial" font-size="10">EXPIRES</text><text x="218" y="129" fill="#1d2633" font-family="Figtree,Arial" font-size="13">03/14/2031</text><rect x="124" y="146" width="150" height="6" rx="3" fill="#d3dae3"/><rect x="124" y="160" width="110" height="6" rx="3" fill="#d3dae3"/></svg></span></div><h4>EasySign uses Plaid to verify your identity</h4><ul class="iv-ul"><li>Take a photo of your ID</li><li>Take a selfie</li><li>About 2 minutes</li></ul><span class="iv-btn">Get started</span><p class="iv-foot">Secured by <img class="iv-pl" src="img/plaid-logo.svg" alt="Plaid"></p></div>
+        <div class="iv-s" data-v="pick"><h4>Select your ID type</h4><p class="iv-dim">United States</p><div class="iv-opt on">Driver’s license</div><div class="iv-opt">Passport</div><div class="iv-opt">State ID card</div><span class="iv-btn">Continue</span><p class="iv-foot">Secured by <img class="iv-pl" src="img/plaid-logo.svg" alt="Plaid"></p></div>
+        <div class="iv-s iv-cam" data-v="front"><h4>Front of your ID</h4><p class="iv-dim">Fit your ID inside the frame</p><div class="iv-vf"><svg class="iv-card" viewBox="0 0 320 200" aria-hidden="true"><rect x="1" y="1" width="318" height="198" rx="14" fill="#f4f7fb" stroke="#c9d3e0"/><rect x="1" y="1" width="318" height="40" rx="14" fill="#2b4a7a"/><rect x="1" y="27" width="318" height="14" fill="#2b4a7a"/><text x="20" y="28" fill="#fff" font-family="Figtree,Arial" font-size="15" font-weight="700" letter-spacing="2">DRIVER LICENSE</text><text x="300" y="28" fill="#cfe0f5" font-family="Figtree,Arial" font-size="12" text-anchor="end">FLORIDA</text><rect x="20" y="58" width="86" height="108" rx="8" fill="#dde3ea"/><circle cx="63" cy="96" r="20" fill="#a9b4c2"/><path d="M30 166c4-26 20-36 33-36s29 10 33 36z" fill="#a9b4c2"/><text x="124" y="74" fill="#72808f" font-family="Figtree,Arial" font-size="10">NAME</text><text x="124" y="91" fill="#1d2633" font-family="Figtree,Arial" font-size="16" font-weight="700">MARCUS ELLING</text><text x="124" y="114" fill="#72808f" font-family="Figtree,Arial" font-size="10">DOB</text><text x="124" y="129" fill="#1d2633" font-family="Figtree,Arial" font-size="13">03/14/1979</text><text x="218" y="114" fill="#72808f" font-family="Figtree,Arial" font-size="10">EXPIRES</text><text x="218" y="129" fill="#1d2633" font-family="Figtree,Arial" font-size="13">03/14/2031</text><rect x="124" y="146" width="150" height="6" rx="3" fill="#d3dae3"/><rect x="124" y="160" width="110" height="6" rx="3" fill="#d3dae3"/></svg><i class="iv-scan"></i></div><p class="iv-cap"><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Front captured</p></div>
+        <div class="iv-s iv-cam" data-v="back"><h4>Back of your ID</h4><p class="iv-dim">Now flip it over</p><div class="iv-vf"><svg class="iv-card" viewBox="0 0 320 200" aria-hidden="true"><rect x="1" y="1" width="318" height="198" rx="14" fill="#f4f7fb" stroke="#c9d3e0"/><rect x="20" y="30" width="280" height="10" rx="5" fill="#d3dae3"/><rect x="20" y="50" width="200" height="10" rx="5" fill="#d3dae3"/><g fill="#1d2633"><rect x="20" y="96" width="4" height="76"/><rect x="27" y="96" width="2" height="76"/><rect x="34" y="96" width="2" height="76"/><rect x="41" y="96" width="4" height="76"/><rect x="48" y="96" width="2" height="76"/><rect x="55" y="96" width="2" height="76"/><rect x="62" y="96" width="4" height="76"/><rect x="69" y="96" width="2" height="76"/><rect x="76" y="96" width="2" height="76"/><rect x="83" y="96" width="4" height="76"/><rect x="90" y="96" width="2" height="76"/><rect x="97" y="96" width="2" height="76"/><rect x="104" y="96" width="4" height="76"/><rect x="111" y="96" width="2" height="76"/><rect x="118" y="96" width="2" height="76"/><rect x="125" y="96" width="4" height="76"/><rect x="132" y="96" width="2" height="76"/><rect x="139" y="96" width="2" height="76"/><rect x="146" y="96" width="4" height="76"/><rect x="153" y="96" width="2" height="76"/><rect x="160" y="96" width="2" height="76"/><rect x="167" y="96" width="4" height="76"/><rect x="174" y="96" width="2" height="76"/><rect x="181" y="96" width="2" height="76"/><rect x="188" y="96" width="4" height="76"/><rect x="195" y="96" width="2" height="76"/><rect x="202" y="96" width="2" height="76"/><rect x="209" y="96" width="4" height="76"/><rect x="216" y="96" width="2" height="76"/><rect x="223" y="96" width="2" height="76"/><rect x="230" y="96" width="4" height="76"/><rect x="237" y="96" width="2" height="76"/><rect x="244" y="96" width="2" height="76"/><rect x="251" y="96" width="4" height="76"/><rect x="258" y="96" width="2" height="76"/><rect x="265" y="96" width="2" height="76"/><rect x="272" y="96" width="4" height="76"/><rect x="279" y="96" width="2" height="76"/><rect x="286" y="96" width="2" height="76"/><rect x="293" y="96" width="4" height="76"/></g></svg><i class="iv-scan"></i></div><p class="iv-cap"><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Back captured</p></div>
+        <div class="iv-s" data-v="selfie"><h4>Take a selfie</h4><p class="iv-dim iv-hint">Turn your head slowly</p><div class="iv-fw"><svg class="iv-face" viewBox="0 0 200 240" aria-hidden="true"><ellipse cx="100" cy="112" rx="78" ry="98" fill="#eef1f5"/><circle cx="100" cy="98" r="34" fill="#b9c3cf"/><path d="M40 210c8-44 34-62 60-62s52 18 60 62z" fill="#b9c3cf"/><ellipse class="iv-ring0" cx="100" cy="112" rx="84" ry="104" fill="none" stroke="#e3e6ea" stroke-width="6"/><ellipse class="iv-ring" cx="100" cy="112" rx="84" ry="104" fill="none" stroke="#12b76a" stroke-width="6" stroke-linecap="round" pathLength="100"/></svg></div><p class="iv-cap"><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Selfie captured</p></div>
+        <div class="iv-s" data-v="check"><div class="iv-spin"></div><h4>Checking your identity</h4><ul class="iv-ck"><li><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Document is real</li><li><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Selfie matches the ID</li><li><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Live person</li><li><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Risk check</li></ul></div>
+        <div class="iv-s" data-v="done"><div class="iv-sc"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#e8f5ee" stroke-width="10"/><circle class="iv-arc" cx="60" cy="60" r="52" fill="none" stroke="#12b76a" stroke-width="10" stroke-linecap="round" pathLength="100" transform="rotate(-90 60 60)"/></svg><b id="ivNum">0</b><span>of 100</span></div><p class="iv-pass"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Pass</p><h4>You are verified</h4><div class="iv-rows"><p><span>Document check</span><b>Pass</b></p><p><span>Selfie match</span><b>Pass</b></p><p><span>Liveness</span><b>Pass</b></p><p><span>Risk</span><b>Low</b></p></div><span class="iv-btn">Continue to sign</span><p class="iv-foot">Secured by <img class="iv-pl" src="img/plaid-logo.svg" alt="Plaid"></p></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="notary" data-note="This follows the email the buyer gets, step for step. Tap Start notarization, or tap any step. About 20 minutes on a real call, from anywhere, with a licensed notary.">
+  <div class="wrap">
+    <p class="eyebrow in" data-k="nz_eye">Online notary</p>
+    <h2 class="in d1" data-k="nz_h">Notarized on video.<br><span class="muted2">From anywhere.</span></h2>
+    <div class="nz in d2">
+      <div class="nz-l">
+        <img class="nz-lock" src="img/notary/lockup.png" alt="YachtWay and OneNotary">
+        <p class="nz-eye">Notarization requested</p>
+        <h3>Notarize your Resolution to Buy</h3>
+        <div class="nz-facts"><p><b>About 20 min</b><span>Start to finish</span></p><p><b>From anywhere</b><span>On video</span></p><p><b>Licensed notary</b><span>Live with you</span></p></div>
+        <button class="iv-go" id="nzGo">Start notarization</button>
+        <ol class="nz-steps" id="nzSteps"><li data-i="0"><i>1</i><div><b>Open your link</b></div></li><li data-i="1"><i>2</i><div><b>Check your camera, sound and internet</b></div></li><li data-i="2"><i>3</i><div><b>Show your ID and take a selfie</b></div></li><li data-i="3"><i>4</i><div><b>Wait for the notary</b></div></li><li data-i="4"><i>5</i><div><b>Sign on video</b></div></li></ol>
+      </div>
+      <div class="nz-r">
+        <div class="nz-stage" id="nzStage"><img src="img/notary/step-1.gif" alt="Step 1: Open your link" data-i="0"><img src="img/notary/step-2.gif" alt="Step 2: Check your camera, sound and internet" data-i="1"><img src="img/notary/step-3.gif" alt="Step 3: Show your ID and take a selfie" data-i="2"><img src="img/notary/step-4.gif" alt="Step 4: Wait for the notary" data-i="3"><img src="img/notary/step-5.gif" alt="Step 5: Sign on video" data-i="4"><div class="nz-idle"><img src="img/notary/icon-video.png" alt=""><b>Ready when you are</b><span>Have ready: a photo ID, a phone with a camera, a quiet, well-lit room.</span></div></div>
+        <p class="nz-cap" id="nzCap"></p>
+        <div class="nz-done" id="nzDone"><span class="iv-ok"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>All done.</b> Your notarized document goes straight to your broker.</div></div>
+        <div class="nz-have"><span><img src="img/notary/icon-id.png" alt="">A photo ID</span><span><img src="img/notary/icon-phone.png" alt="">A phone with a camera</span><span><img src="img/notary/icon-light.png" alt="">A quiet, well-lit room</span><span><img src="img/notary/icon-time.png" alt="">About 20 minutes</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1241,73 +1343,6 @@ One place.</h1>
   </div>
 </section>
 
-<!-- vato intro -->
-<section class="scene" id="vato-intro" data-note="Change of topic. Let the question sit for a second. Then say: VATO reads live asking prices, never sold prices.">
-  <div class="wrap center vintro">
-    <div class="in"><span class="vlogo xl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 12 19l8.5-10.5"/><path d="M8 8.5 12 13.5l4-5"/><circle cx="12" cy="4.75" r="1.25" fill="currentColor" stroke="none"/></svg>VATO</span></div>
-    <h2 class="in d1" data-k="vi_h">Now, what is the boat worth?</h2>
-    <p class="lead in d2" data-k="vi_sub">VATO prices any model from live asking-price market data. 53 Sanlorenzo SX88 listings, in one view.</p>
-    <div class="frame in d3"><img src="img/vato-valuation.png" alt="VATO market analysis for the Sanlorenzo SX88"></div>
-  </div>
-</section>
-
-<section class="scene" id="vato" data-note="Ask them to guess first. Then press the button. Say asking prices, live market. Never say sold.">
-  <div class="wrap" id="vwrap">
-    <p class="eyebrow in" data-k="vato_eye">VATO · Live market</p>
-    <h2 class="in d1" data-k="vato_h">What is a Sanlorenzo SX88 worth?</h2>
-    <div class="in d2"><button class="btn pri" id="askVato">Ask VATO</button></div>
-    <div class="vgrid">
-      <div style="display:flex;flex-direction:column;gap:18px">
-        <div class="reveal"><div class="money" id="money">$0</div><p class="muted" style="margin-top:8px;font-size:17px">Median asking price · 53 listings</p></div>
-        <div class="reveal r2">
-          <div class="range">
-            <div class="track"></div>
-            <div class="band" style="--l:34.4%;--w:30%"></div>
-            <div class="tick" style="--l:9.6%"></div><div class="tick" style="--l:92.4%"></div>
-            <div class="med" style="--l:54.7%"></div>
-            <div class="lbl" style="--l:9.6%">Low 10% <b>$2.98M</b></div>
-            <div class="lbl" style="--l:49.4%">Middle 50% <b>$4.94M to $6.44M</b></div>
-            <div class="lbl" style="--l:92.4%">High 10% <b>$7.12M</b></div>
-          </div>
-        </div>
-        <div class="reveal r3 yr"><span><b style="color:var(--ink)">2018</b> $5.25M</span>
-          <svg viewBox="0 0 200 44" preserveAspectRatio="none"><path class="ln" d="M4 38 L196 6"/></svg>
-          <span><b style="color:var(--ink)">2025</b> $7.98M</span></div>
-        <div class="reveal r3 facts"><span class="pill"><b>-5.8%</b> a year older</span><span class="pill">Asking prices, not sold prices</span></div>
-      </div>
-      <div class="reveal r2 frame"><img src="img/vato-valuation.png" alt="VATO market analysis for the Sanlorenzo SX88"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8 vato timing -->
-<section class="scene gray" id="timing" data-note="Check which model this screen is before the call and say it out loud. Use it for the pricing talk with the seller.">
-  <div class="wrap">
-    <p class="eyebrow in" data-k="time_eye">VATO · Timing</p>
-    <div class="vgrid">
-      <div style="display:flex;flex-direction:column;gap:18px">
-        <div class="giant in d1"><span id="days">0</span><small>days</small></div>
-        <p class="lead in d2" data-k="time_sub">Average time on market. Median 61 days.</p>
-        <div class="facts in d3"><span class="pill"><b>2</b> reduced listings · avg -17.0%</span><span class="pill"><b>408 h</b> median engine hours</span></div>
-      </div>
-      <div class="frame in d3"><img src="img/vato-timing.png" alt="VATO timing panel with days on market and asking spread"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 9 choose -->
-<!-- vato price -->
-<section class="scene gray" id="vprice" data-note="VATO is its own app with its own price. Say the five free searches first. Asking prices only, never sold.">
-  <div class="wrap">
-    <div class="in"><span class="draft">Separate app, separate price</span></div>
-    <h2 class="in d1" data-k="vprice_h">VATO. Start free.</h2>
-    <div class="vplans">
-      <div class="plan in d2"><div class="n">Free</div><div class="p">5</div><div class="d">Searches, one time</div></div>
-      <div class="plan pop in d3"><div class="n">Pro</div><div class="p">$109</div><div class="d">A month, per company</div></div>
-    </div>
-  </div>
-</section>
-
 <section class="scene" id="choose" data-note="Let them pick. Two topics max, then go to price.">
   <div class="wrap">
     <h2 class="in" data-k="choose_h">Where next? You pick.</h2>
@@ -1394,39 +1429,13 @@ One place.</h1>
   </div>
 </section>
 
-<!-- 11 next -->
-<section class="scene" id="next" data-note="Book the follow-up before hanging up. Agree on the date live and type it in.">
-  <div class="wrap">
-    <p class="eyebrow in" data-k="next_eye">Next step</p>
-    <h2 class="in d1" data-k="next_h">Start this week.</h2>
-    <div class="ncards">
-      <div class="ncard in d2"><div class="p" data-k="next_1">5 VATO reports on your boats</div></div>
-      <div class="ncard in d3"><div class="p" data-k="next_2">Send us your forms. Live within 24 hours.</div></div>
-      <div class="ncard in d4"><div class="p">Follow-up on</div><button type="button" class="ndt" id="nextDate" aria-label="Follow-up date"></button></div>
-    </div>
-    <p class="lead in d5" data-k="next_cal">Book a time at cal.yachtway.com</p>
-  </div>
-</section>
-
-<!-- 12 list -->
-<section class="scene gray" id="list" data-note="Read back what they asked. Type it in. Each one gets an answer in the follow-up email.">
-  <div class="wrap">
-    <p class="eyebrow in" data-k="list_eye">Your list</p>
-    <h2 class="in d1" data-k="list_h">What you asked for today.</h2>
-    <div class="lines in d2">
-      <div class="line"><span>1</span><div class="fill" contenteditable="true" data-k="list_1" data-ph="Type here"></div></div>
-      <div class="line"><span>2</span><div class="fill" contenteditable="true" data-k="list_2" data-ph="Type here"></div></div>
-      <div class="line"><span>3</span><div class="fill" contenteditable="true" data-k="list_3" data-ph="Type here"></div></div>
-    </div>
-    <p class="lead in d3" data-k="list_foot">Each one gets an answer in the follow-up email.</p>
-  </div>
-</section>
-
 <div class="notes" id="notes"><b>Presenter notes</b><span id="noteText"></span></div>
 <div class="bar">
+  <button class="nav" id="homeBtn" aria-label="Back to start" title="Back to start (Home)"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 9.5V20h12V9.5"/></svg></button>
   <button class="nav" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
   <div class="dots" id="dots"></div>
   <button class="nav" id="nextBtn" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button class="nxt" id="nxtUp" type="button"></button>
 </div>
 
 <script>
@@ -1437,13 +1446,13 @@ One place.</h1>
   let cur=null, main=[];
 
   // tracks: the prospect picks EasySign V2 or VATO first, the other follows
-  const ES=['hero','today','flow','merge','keep','docreq','import','trust','recap','price'], VA=['vato-intro','vato','timing','vprice'], END=['choose','next','list'];
+  const ES=['hero','today','flow','merge','keep','idv','notary','docreq','import','trust','recap','price'], END=['choose'];
   const dots=$('#dots');
   let track='es', closings=store.get('pitch.closings')||'';
   function esIds(){const a=[...ES];if(closings==='y')a.splice(a.indexOf('flow')+1,0,'d-forms');return a}
   function setTrack(t){
     track=t;
-    const ids=['start',...(t==='vato'?[...VA,...esIds()]:esIds()),...END];
+    const ids=[...esIds(),...END];
     main=ids.map(id=>document.getElementById(id));
     dots.innerHTML='';
     main.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Scene '+(i+1));b.onclick=()=>go(s.id);dots.appendChild(b)});
@@ -1459,7 +1468,13 @@ One place.</h1>
     const mi=main.indexOf(cur);[...dots.children].forEach((d,i)=>d.classList.toggle('act',i===mi));
   }));
 
-  const enter={};
+  const enter={},leaveFx={};
+  // end-of-flow pill: "Next" when a feature demo finishes, "Back to the list" when the scene was opened from the keep cards
+  // feature demos always return to the keep list; opened from a keep card the pill shows from the start
+  let back=null;const nb=$('#nxtUp'),FEAT=['idv','notary','docreq'],toList=()=>cur&&FEAT.includes(cur.id);
+  function paint(on){const b=toList();nb.classList.toggle('on',!!(on||back));nb.classList.toggle('bk',b);nb.innerHTML=b?'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Back to the list</span>':'<span>Next</span><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>'}
+  window.nxt=(on,id)=>{if(cur&&cur.id===id)paint(on)};
+  nb.onclick=()=>toList()?go('keep'):step(1);
   function go(id){
     const s=document.getElementById(id); if(!s||s===cur) return;
     if(cur){cur.classList.remove('on'); leave(cur.id)}
@@ -1469,6 +1484,7 @@ One place.</h1>
     [...dots.children].forEach((d,i)=>d.classList.toggle('act',i===mi));
     $('#noteText').textContent=s.dataset.note||'';
     store.set('pitch.scene',id);
+    back=null;paint(false);
     if(enter[id]) enter[id]();
     fit();
     if(history.replaceState) try{history.replaceState(null,'','#'+id)}catch(e){}
@@ -1497,8 +1513,38 @@ One place.</h1>
     if(cur.classList.contains('detail')&&!main.includes(cur)){go('choose');return}
     const i=main.indexOf(cur)+d; if(i>=0&&i<main.length) go(main[i].id);
   }
-  $('#prev').onclick=()=>step(-1); $('#nextBtn').onclick=()=>step(1);
-  $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+  // ID check demo: broker sends, buyer runs the Plaid check on their phone
+  {const SEQ=[['wait',0],['mail',1],['intro',2],['pick',2],['front',2],['back',2],['selfie',3],['check',4],['done',4]],DUR={wait:700,mail:2000,intro:1900,pick:1500,front:3600,back:3000,selfie:3400,check:2800};
+  let T=[],k=0;const scr=$('#ivScr');
+  const clr=()=>{T.forEach(clearTimeout);T=[]};
+  function show(i){k=i;const [v,ph]=SEQ[i];scr.querySelectorAll('.iv-s').forEach(x=>x.classList.toggle('on',x.dataset.v===v));const S=scr.querySelector(`[data-v="${v}"]`);S.classList.remove('got');
+    $$('#ivSteps li').forEach(l=>{const n=+l.dataset.ph;l.classList.toggle('on',n===ph);l.classList.toggle('dn',n<ph||v==='done')});
+    $('#ivGo').classList.toggle('sent',i>0);$('#ivGo').textContent=i>0?'Sent':'Send for signing';$('#ivRes').classList.toggle('on',v==='done');nxt(v==='done','idv');
+    if(v==='front'||v==='back')T.push(setTimeout(()=>S.classList.add('got'),DUR[v]-900));
+    if(v==='selfie'){const h=S.querySelector('.iv-hint');h.textContent='Turn your head slowly';T.push(setTimeout(()=>h.textContent='Now look straight ahead',1500),setTimeout(()=>S.classList.add('got'),2800))}
+    if(v==='check'){const L=[...S.querySelectorAll('li')];L.forEach(l=>l.classList.remove('dn'));L.forEach((l,j)=>T.push(setTimeout(()=>l.classList.add('dn'),500+j*550)))}
+    if(v==='done'){const n=$('#ivNum');let c=0;const t=setInterval(()=>{c=Math.min(94,c+4);n.textContent=c;if(c>=94)clearInterval(t)},45);T.push(t)}
+    if(DUR[v]&&i>0)T.push(setTimeout(()=>show(i+1),DUR[v]))}
+  function run(i){clr();if(i>0)flip(true);show(i)}
+  const tg=$('#ivTg'),flip=v=>tg.setAttribute('aria-checked',v);tg.onclick=()=>flip(tg.getAttribute('aria-checked')!=='true');tg.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();e.stopPropagation();tg.click()}};
+  $('#ivGo').onclick=()=>{const g=$('#ivGo');g.classList.add('pr');setTimeout(()=>g.classList.remove('pr'),150);run(1)};
+  $$('#ivSteps li').forEach(l=>l.onclick=()=>run(SEQ.findIndex(s=>s[1]===+l.dataset.ph)));
+  enter.idv=()=>{flip(false);run(0)};leaveFx.idv=clr;}
+  // online notary demo: the five steps of the OneNotary email
+  {let T=[];const st=$('#nzStage'),cap=$('#nzCap'),L=$$('#nzSteps li');
+  const clr=()=>{T.forEach(clearTimeout);T=[]};
+  function show(i){st.classList.toggle('go',i>=0);st.querySelectorAll(':scope>img').forEach(m=>m.classList.toggle('on',+m.dataset.i===i));
+    L.forEach((l,j)=>{l.classList.toggle('on',j===i);l.classList.toggle('dn',j<i||i===5)});
+    cap.textContent=i>=0&&i<5?`Step ${i+1} of 5 · ${L[i].querySelector('b').textContent}`:'';
+    $('#nzDone').classList.toggle('on',i===5);nxt(i===5,'notary');if(i===5)st.querySelector('[data-i="4"]').classList.add('on');
+    $('#nzGo').textContent=i<0?'Start notarization':i===5?'Watch again':'Notarizing';
+    if(i>=0&&i<5)T.push(setTimeout(()=>show(i+1),4200))}
+  const run=i=>{clr();show(i)};
+  $('#nzGo').onclick=()=>run(0);L.forEach(l=>l.onclick=()=>run(+l.dataset.i));
+  enter.notary=()=>run(-1);leaveFx.notary=clr;}
+  $('#homeBtn').onclick=()=>go(main[0].id); $('#prev').onclick=()=>step(-1); $('#nextBtn').onclick=()=>step(1);
+  $$('[data-go]').forEach(b=>b.onclick=()=>{const k=b.closest('#keep');go(b.dataset.go);if(k){back=1;paint(false)}});
 
   const typing=()=>{const a=document.activeElement;return a&&(a.isContentEditable||a.tagName==='INPUT'||a.tagName==='TEXTAREA')};
   document.addEventListener('keydown',e=>{
@@ -1506,6 +1552,7 @@ One place.</h1>
     if(e.metaKey||e.ctrlKey||e.altKey) return;
     if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();step(1)}
     else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();step(-1)}
+    else if(e.key==='Home'){e.preventDefault();go(main[0].id)}
     else if(e.key==='e'||e.key==='E') toggleEdit();
     else if(e.key==='n'||e.key==='N') toggleNotes();
   });
@@ -1604,10 +1651,10 @@ One place.</h1>
   }
   function clientScreen(){
     const LK='<div class="lockup"><img src="img/yachtway-docusign-lockup.png" alt="YachtWay and DocuSign"></div>';
-    if(F.st==='bsign')return `${LK}<p class="who">The buyer · prepared by your broker</p><h3>${IY()?'Sign the IYBA agreement':'Sign your offer'}</h3><div class="tg">${TERMS.map(([k,l])=>`<div class="trm"><div class="tl"><span>${l}</span><b>${fv(k,F.T[k])}</b></div></div>`).join('')}</div><p class="note">Your signature sends it to the seller’s broker. No account needed.</p><div class="sp"></div>${iyCta()}<button class="btn pri" data-a="o-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
+    if(F.st==='bsign')return `${LK}<p class="who">The buyer · prepared by your broker</p><h3>${IY()?'Sign the IYBA agreement':'Sign your offer'}</h3><div class="tg">${TERMS.map(([k,l])=>`<div class="trm"><div class="tl"><span>${l}</span><b>${fv(k,F.T[k])}</b></div></div>`).join('')}</div><p class="note">Your signature sends it to the seller’s broker. No account needed.</p><div class="sp"></div>${iyCta(1)}<button class="btn pri" data-a="o-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
     const me=actor('reply'),c=SIDE[me],ks=Object.keys(F.pend);
     const list=TERMS.map(([k,l])=>{const x=k in F.pend;return `<div class="trm"><div class="tl"><span>${l}${x?'<em class="tag">Counter</em>':''}</span><span>${x?`<s>${fv(k,F.T[k])}</s>`:''}<b>${fv(k,x?F.pend[k]:F.T[k])}</b></span></div></div>`}).join('');
-    return `${LK}<p class="who">The ${c} · prepared by your broker</p><h3>${ks.length?`Sign your counter · ${ks.length} term${ks.length>1?'s':''}`:'Sign the agreed terms'}</h3><div class="tg">${list}</div><p class="note">${ks.length?`Your signature sends it to the ${SIDE[oth(me)]}’s broker.`:'Your signature makes it fully executed.'} No account needed.</p><div class="sp"></div>${iyCta()}<button class="btn pri" data-a="c-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
+    return `${LK}<p class="who">The ${c} · prepared by your broker</p><h3>${ks.length?`Sign your counter · ${ks.length} term${ks.length>1?'s':''}`:'Sign the agreed terms'}</h3><div class="tg">${list}</div><p class="note">${ks.length?`Your signature sends it to the ${SIDE[oth(me)]}’s broker.`:'Your signature makes it fully executed.'} No account needed.</p><div class="sp"></div>${iyCta(me==='buy')}<button class="btn pri" data-a="c-sign">Sign</button><button class="btn ter" data-a="decline">Decline</button>`;
   }
   function screen(){
     if(ORDER.indexOf(F.st)>3)return postScreen();
@@ -1629,7 +1676,7 @@ One place.</h1>
       case'done':h=done;break;
       case'declined':h=`${k}<h3>${F.dBy===F.side?'You declined':(F.dBy==='sell'?'The seller':'The buyer side')+' declined'}</h3>${row('Last offer',money(F.T.price))}<p class="note">Nothing is binding. Start a new offer from the deal.</p><div class="sp"></div><button class="btn sec" data-a="reset">Run it again</button>`;break;
     }
-    return h+logHtml();
+    return h+(me&&F.side==='buy'&&(F.st==='bsign'||F.st==='reply')?'':logHtml());
   }
   function postScreen(){
     const P=money(F.T.price),k=`<p class="k">${BOAT}</p>`;
@@ -1684,7 +1731,7 @@ One place.</h1>
   const IY=()=>F.form==='iyba';
   const SRC=[['es','ES','EasySign Offer','Built in. Ready now',1],['iyba','IYBA','IYBA Purchase and Sale','Your office copy · PDF',1],['ybaa','YBAA','YBAA Purchase Agreement','Upload your copy',0],['cyba','CYBA','CYBA Purchase Agreement','Upload your copy',0],['myba','MYBA','MYBA Memorandum of Agreement','Upload your copy',0],['oth','PDF','Other','Any PDF contract you use',0]];
   function sst(){return[F.st==='bsign'||F.st==='reply'&&oth(F.from)==='buy'?'now':F.bSig,F.st==='reply'&&oth(F.from)==='sell'?'now':F.sSig]}
-  const iyCta=()=>IY()?'<p class="dis">Contract wording supplied by your broker’s office. YachtWay did not review it. The parties are solely responsible for its content.</p><button class="btn sec" data-a="otp">Read the full contract</button>':'';
+  const iyCta=buy=>IY()?(buy?'':'<p class="dis">Contract wording supplied by your broker’s office. YachtWay did not review it. The parties are solely responsible for its content.</p>')+'<button class="btn sec" data-a="otp">Read the full contract</button>':'';
   const PP=(x,y)=>`left:${(x/6.12).toFixed(2)}%;top:${(y/7.92).toFixed(2)}%`;
   const OD='Oct 26, 2026';
   const fz=(x,y,t,c)=>`<span class="f${c?' '+c:''}" style="${PP(x,y)}">${t}</span>`;
@@ -1696,7 +1743,7 @@ One place.</h1>
     return h}
   function iyPg(n){
     const [b,s]=sst(),T=F.T;let h='';
-    if(n===1)h=[[85.8,98.4,'Marcus Elling'],[90.7,114.3,'Fort Lauderdale, FL'],[103.4,143.5,'USA'],[359,98.4,'J. Whitaker'],[363.1,114.3,'Miami, FL'],[375.8,143.5,'USA'],[117.4,159.4,'Halcyon'],[404,159.4,'Azimut'],[84.2,174.3,'60 Flybridge'],[390.8,174.3,'60 ft'],[75.5,189.4,'2019'],[415.3,189.4,'1298765'],[516,189.4,'USA'],[90.7,204.3,'XAX60012F819'],[408.8,204.3,'Twin MAN V8, 1,200 hp'],[115.2,219.1,'Kate Morgan, Harbor Yacht Sales'],[387.2,219.1,'Chris Patel'],[101.3,248.4,OD],[147,263.3,fdate(T.exp)],[139,278.2,'Nov 10, 2026'],[109.6,293.1,fdate(T.close)],[391.4,248.4,money(T.price)],[381.9,263.3,money(T.dep)],[493.1,278.2,'$0'],[362.3,293.1,money(T.price-T.dep)],[131.8,316.1,'Bahia Mar Marina, Fort Lauderdale, FL']].map(a=>fz(...a)).join('')+fz(323.8,191.6,'✕','x')+fz(264.2,352.6,'✕','x');
+    if(n===1)h=[[85.8,98.4,'Marcus Elling'],[90.7,114.3,'1100 Seabreeze Blvd'],[90.7,129.2,'Fort Lauderdale, FL 33316'],[103.4,143.5,'USA'],[359,98.4,'J. Whitaker'],[363.1,114.3,'2500 S Bayshore Dr'],[363.1,129.2,'Miami, FL 33133'],[375.8,143.5,'USA'],[117.4,159.4,'Halcyon'],[404,159.4,'Azimut'],[84.2,174.3,'60 Flybridge'],[390.8,174.3,'60 ft'],[75.5,189.4,'2019'],[415.3,189.4,'1298765'],[516,189.4,'USA'],[90.7,204.3,'XAX60012F819'],[408.8,204.3,'Twin MAN V8, 1,200 hp'],[115.2,219.1,'Kate Morgan, Harbor Yacht Sales'],[387.2,219.1,'Chris Patel'],[101.3,248.4,OD],[147,263.3,fdate(T.exp)],[139,278.2,'Nov 10, 2026'],[109.6,293.1,fdate(T.close)],[391.4,248.4,money(T.price)],[381.9,263.3,money(T.dep)],[493.1,278.2,'$0'],[362.3,293.1,money(T.price-T.dep)],[131.8,316.1,'Bahia Mar Marina, Fort Lauderdale, FL']].map(([x,y,t])=>fz(x,y+2.2,t)).join('')+fz(323.8,191.6,'✕','x')+fz(264.2,352.6,'✕','x');
     if(n<4){const y=n===1?731.4:750.9;h+=ini(72,y,b,'ME')+ini(517,y,s,'JW')}
     else h+=sg4(90,b,'Marcus Elling',F.bAt,F.fresh==='b')+sg4(342,s,'J. Whitaker',F.sAt,F.fresh==='s')+`<div class="dis" style="top:${(684/7.92).toFixed(2)}%"><b>Dealer-supplied wording.</b> This contract text was supplied by Harbor Yacht Sales. YachtWay did not review it. Its content is the sole responsibility of the parties. Signed with EasySign · Deal YW-1001.</div>`;
     return `<div class="pg"><img src="img/iyba-p-${n}.png" alt="IYBA agreement page ${n}">${h}</div>`}
@@ -1710,14 +1757,18 @@ One place.</h1>
     $$('#istep span').forEach((x,i)=>x.classList.toggle('on',i<ii||ii===2));
     const a=actor(F.st),cap=x=>x[0].toUpperCase()+x.slice(1);$('#flowEye').textContent=F.st==='bsign'?'Buyer’s turn':F.st==='pick'||F.st==='read'||F.st==='scanned'?'Step 1 · Import':F.st==='draft'||F.st==='relay'&&a==='buy'?'Buyer’s broker’s turn':F.st==='relay'?'Listing broker’s turn':a?cap(SIDE[a])+'’s turn':{done:'Fully signed',declined:'Declined'}[F.st]||'Closing';
   }
+  const scr=()=>(HIST.length&&F.st!=='read'?'<button class="pbk" data-a="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Back</button>':'')+screen();
   function render(anim){
+    nxt(F.st==='closed','flow');
     const old=pscr.querySelector('.ps.act');
-    if(!anim&&old){const y=old.scrollTop;old.innerHTML=screen();old.scrollTop=y;chrome();return}
-    const n=document.createElement('div');n.className='ps';n.innerHTML=screen();pscr.appendChild(n);
+    if(!anim&&old){const y=old.scrollTop;old.innerHTML=scr();old.scrollTop=y;chrome();return}
+    const n=document.createElement('div');n.className='ps';n.innerHTML=scr();pscr.appendChild(n);
     requestAnimationFrame(()=>requestAnimationFrame(()=>{n.classList.add('act');if(old){old.classList.remove('act');old.classList.add('gone');setTimeout(()=>old.remove(),600)}}));
     chrome();
   }
-  function flowGo(st){F.st=st;const a=actor(st);if(a&&a!==F.side){F.side=a;phoneEl.classList.add('flip');setTimeout(()=>phoneEl.classList.remove('flip'),500)}render(true)}
+  let HIST=[];
+  function flowBack(){let p;do p=HIST.pop();while(p&&p.st==='read');if(!p)return;Object.assign(F,p);DATES[3][0]=fdate(F.T.close).replace(/, \d+$/,'');render(true)}
+  function flowGo(st){HIST.push(structuredClone(F));F.st=st;const a=actor(st);if(a&&a!==F.side){F.side=a;phoneEl.classList.add('flip');setTimeout(()=>phoneEl.classList.remove('flip'),500)}render(true)}
   let vT=0;
   function vSync(){const sk=F.from==='buy'?'bSig':'sSig',ak=F.from==='buy'?'bAt':'sAt',any=Object.values(F.pick).includes('c');
     if(any&&F[sk]==='signed'){F.vk=sk;F.vAt=F[ak];F[sk]='void';F.vNew=true;clearTimeout(vT);vT=setTimeout(()=>{if(F[sk]!=='void')return;F[sk]='wait';F[ak]='';F.vNew=false;paintDoc()},2000)}
@@ -1782,6 +1833,7 @@ One place.</h1>
       case'to-admin':addLog('Bill of Sale sent to admin for review');flowGo('approve');break;
       case'approve':addLog('Admin approved. Closing documents sent');flowGo('closed');break;
       case'reset':resetFlow();break;
+      case'back':flowBack();break;
     }
   });
   $$('#sideSeg button').forEach(x=>x.onclick=()=>{if(F.side===x.dataset.side)return;F.side=x.dataset.side;phoneEl.classList.add('flip');setTimeout(()=>phoneEl.classList.remove('flip'),500);render(true)});
@@ -1793,7 +1845,7 @@ One place.</h1>
     DATES[3][0]=fdate(F.T.close).replace(/, \d+$/,'');
     paintDoc()});
   pscr.addEventListener('focusout',e=>{const t=e.target,k=t.dataset.t,f=t.dataset.f;if(!k||!f)return;const v=f==='c'?F.cv[k]:F.T[k];t.value=k==='price'||k==='dep'?money(v):v});
-  function resetFlow(){auClose();clearTimeout(vT);Object.assign(F,fresh0());DATES[3][0]=fdate(F.T.close).replace(/, \d+$/,'');render(true)}
+  function resetFlow(){HIST=[];auClose();clearTimeout(vT);Object.assign(F,fresh0());DATES[3][0]=fdate(F.T.close).replace(/, \d+$/,'');render(true)}
   enter.flow=()=>{if(F.st!=='pick')resetFlow()}; // always open on Import your contract
   render(true);
   (()=>{
@@ -1803,7 +1855,7 @@ One place.</h1>
       [['Reference','YW-0431'],['Seller','Owner on file'],['Listing price','$795,000'],['Term','6 months'],['Listed','Jan 30, 2024'],['Source','BoatDox']]];
     const files=$('#ifiles'),drop=$('#idrop'),rows=$('#irows'),q=$('#isearch'),cnt=$('#icount'),st=$$('#isteps li');
     let done=0,T=[];
-    const stage=n=>st.forEach((l,i)=>{l.classList.toggle('on',i===n);l.classList.toggle('dn',i<n)});
+    const stage=n=>(nxt(n===3,'import'),st).forEach((l,i)=>{l.classList.toggle('on',i===n);l.classList.toggle('dn',i<n)});
     const count=()=>{const f=[...rows.querySelectorAll('.irow.f')],n=f.length;cnt.textContent=n?n+(n===1?' record':' records'):'No archived deals yet';
       $('#k-rec').textContent=n;$('#k-pdf').textContent=n;$('#k-chk').textContent=rows.querySelectorAll('.pl.op').length;const s=[...new Set(f.map(r=>r.dataset.src))];$('#k-src').textContent=s.length?s.join(', '):'None yet'};
     function imp(k){
@@ -1841,6 +1893,7 @@ One place.</h1>
     enter.import=()=>{T.forEach(clearTimeout);T=[];done=0;addr.textContent='1482093517ES@YachtWay.com';cp.textContent='Copy address';cp.classList.remove('ok');note.className='inote';note.innerHTML=NOTE;files.querySelectorAll('.ifile').forEach(f=>f.classList.remove('gone','drag'));rows.innerHTML='<p class="iempty">Deals you import show up here.</p>';q.value='';q.disabled=true;stage(0);count()};
   })();
   function leave(id){
+    if(leaveFx[id])leaveFx[id]();
     if(id==='flow')resetFlow();
     if(id==='merge')$('#mstage').classList.remove('m');
   }
@@ -1854,16 +1907,12 @@ One place.</h1>
   }
   const usd=n=>'$'+n.toLocaleString('en-US');
   enter.merge=()=>setTimeout(()=>{if(cur.id==='merge')$('#mstage').classList.add('m')},1600);
-  enter.vato=()=>{$('#vwrap').classList.remove('shown');$('#money').textContent='$0';$('#askVato').style.display=''};
-  $('#askVato').onclick=function(){this.style.display='none';$('#vwrap').classList.add('shown');count($('#money'),5733761,usd,1800)};
-  enter.timing=()=>{$('#days').textContent='0';setTimeout(()=>count($('#days'),278,String,1400),400)};
 
   // shared words: db when available, local otherwise
-  const keyed=$$('[data-k]'),dateEl=$('#nextDate');
+  const keyed=$$('[data-k]');
   const local=()=>{try{return JSON.parse(store.get('pitch.copy')||'{}')}catch(e){return{}}};
   function apply(data){
     keyed.forEach(el=>{const v=data[el.dataset.k];if(typeof v==='string'&&el!==document.activeElement&&el.innerText!==v)el.innerText=v});
-    if(typeof data.next_date==='string'){dateEl.dataset.v=data.next_date;dateEl.textContent=data.next_date?fdate(data.next_date):''}
   }
   apply(local());
   let ref=null,exists=false;const sync=$('#sync');
@@ -1883,7 +1932,6 @@ One place.</h1>
     el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!el.matches('h1,h2')){e.preventDefault();el.blur()}});
     el.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,t)});
   });
-  dateEl.addEventListener('click',e=>{e.stopPropagation();CAL.open(dateEl.dataset.v,'2026-10-25',v=>{dateEl.dataset.v=v;dateEl.textContent=fdate(v);save('next_date',v)},dateEl)});
 
   if(window.claude&&claude.use){
     claude.use('db').then(db=>{
@@ -1898,10 +1946,10 @@ One place.</h1>
   }
 
   const start=(location.hash||'').slice(1);
-  go(document.getElementById(start)?start:'start');
+  go(document.getElementById(start)?start:main[0].id);
 })();
 </script>
-<script>document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const c=b.parentNode,was=b.classList.contains('on');if(c.classList.contains('one'))c.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.toggle('on',!was)}))</script><div id="sx" aria-hidden="true"><div class="es-send" id="sxsnd" role="status" aria-live="polite"><span class="es-send-sr">Sending for signature</span><div class="es-send-stage"><svg class="es-send-art" viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" > <g class="es-send-wires"> <path d="M228 150 C320 150 340 60 420 60" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> <path d="M228 150 C320 150 340 150 420 150" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> <path d="M228 150 C320 150 340 240 420 240" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> </g> <path class="es-send-beam" style="--b:3.9s" d="M228 150 C320 150 340 60 420 60" /> <path class="es-send-beam" style="--b:4.4s" d="M228 150 C320 150 340 150 420 150" /> <path class="es-send-beam" style="--b:4.9s" d="M228 150 C320 150 340 240 420 240" /> <g class="es-send-doc"> <rect x="40" y="30" width="180" height="240" rx="14" fill="#ffffff" stroke="#e6dcf4" stroke-width="1.5" /> <rect x="60" y="52" width="44" height="8" rx="4" fill="#4b0ea3" /> <rect x="60" y="72" width="120" height="10" rx="5" fill="#22222d" opacity="0.85" /> <rect x="60" y="98" width="140" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="113" width="132" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="128" width="140" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="143" width="96" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="162" width="124" height="7" rx="3.5" fill="#e8e8ea" /> <line x1="60" y1="230" x2="200" y2="230" stroke="#c1c1c4" stroke-width="1.5" stroke-linecap="round" /> <rect x="60" y="240" width="56" height="6" rx="3" fill="#e8e8ea" /> <g transform="translate(64 178) scale(0.5) translate(-500 -20)"> <path class="es-send-ink" d="M548.39 101.13 C547.76 101.13 546.48 100.87 544.75 100.32 C543.02 99.77 540.83 98.92 538.37 97.75 C533.44 95.4 527.44 91.74 521.87 86.47 C512.56 77.67 506.71 67.27 504.79 57.56 C502.86 47.85 504.85 38.83 511.22 32.81 C521.69 22.92 540.73 24.19 557.51 34.72 C563 38.2 568 42.5 574.02 48.96 C581.27 56.86 586.42 64.84 588.38 71.89 C589.36 75.42 589.53 78.71 588.77 81.65 C588 84.59 586.31 87.17 583.53 89.27 C579.37 92.42 574.65 92.18 570.2 90.44 C565.76 88.71 561.59 85.48 558.52 82.68" /> </g> </g> <g class="es-send-pen"> <g transform="scale(0.5) translate(-529.5 -76.5)"> <path d="M586.313 1.26342C588.05 -0.421141 590.812 -0.421141 592.549 1.26342L606.871 15.1511C607.74 15.9946 608.232 17.1544 608.232 18.366C608.232 19.5777 607.74 20.7383 606.871 21.5818L549.622 77.0964C548.789 77.9037 547.675 78.3561 546.515 78.3591L532.155 78.3972C530.963 78.4003 529.819 77.9276 528.976 77.0847C528.133 76.2418 527.661 75.0979 527.665 73.906L527.704 59.9802C527.707 58.7729 528.197 57.6176 529.064 56.7771L586.313 1.26342Z" fill="#ffffff" /> <path d="M586.313 1.26342C588.05 -0.421141 590.812 -0.421141 592.549 1.26342L606.871 15.1511C607.74 15.9946 608.232 17.1544 608.232 18.366C608.232 19.5777 607.74 20.7383 606.871 21.5818L549.622 77.0964C548.789 77.9037 547.675 78.3561 546.515 78.3591L532.155 78.3972C530.963 78.4003 529.819 77.9276 528.976 77.0847C528.133 76.2418 527.661 75.0979 527.665 73.906L527.704 59.9802C527.707 58.7729 528.197 57.6176 529.064 56.7771L586.313 1.26342ZM536.655 61.8923L536.633 69.4275L544.684 69.406L597.319 18.366L589.43 10.7165L536.655 61.8923Z" fill="#4b0ea3" /> <path d="M577.699 14.045C579.421 12.2696 582.257 12.2265 584.032 13.9483L593.786 23.4063C595.562 25.1281 595.606 27.9636 593.884 29.7393C592.162 31.515 589.327 31.5589 587.551 29.8369L577.796 20.378C576.021 18.656 575.978 15.8205 577.699 14.045Z" fill="#4b0ea3" /> </g> </g> <circle class="es-send-ring" cx="220" cy="38" r="24" stroke="#7e52be" stroke-width="2" /> <g class="es-send-lock"> <circle cx="220" cy="38" r="24" fill="#4b0ea3" /> <path d="M214.5 36 V32.5 a5.5 5.5 0 0 1 11 0 V36" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" /> <rect x="211" y="35.5" width="18" height="13" rx="3" fill="#ffffff" /> <circle cx="220" cy="42" r="1.8" fill="#4b0ea3" /> </g> <g> <circle cx="446" cy="60" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="54" r="6.5" fill="#4b0ea3" /> <path d="M434.5 72 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> <circle cx="446" cy="150" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="144" r="6.5" fill="#4b0ea3" /> <path d="M434.5 162 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> <circle cx="446" cy="240" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="234" r="6.5" fill="#4b0ea3" /> <path d="M434.5 252 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> </g> <g class="es-send-check" style="--c:0s"> <circle cx="466" cy="80" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 80.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> <g class="es-send-check" style="--c:.15s" > <circle cx="466" cy="170" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 170.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> <g class="es-send-check" style="--c:.3s" > <circle cx="466" cy="260" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 260.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> </svg><div class="es-send-heads" aria-hidden="true"><div class="es-send-ha"><h1 class="es-send-title">Sending for signature</h1><p class="es-send-sub">Encrypted and delivered to each party.</p></div><div class="es-send-hb"><h2 class="es-send-title">Sent for signature</h2><p class="es-send-sub">Thank you for choosing EasySign.</p></div></div><ol class="es-send-steps" aria-hidden="true"><li class="es-send-step es-send-step--1" style="--a:.6s;--d:2.7s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Preparing for signature</span></li><li class="es-send-step es-send-step--2" style="--a:3.1s;--d:3.9s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Applying encryption</span></li><li class="es-send-step es-send-step--3" style="--a:3.9s;--d:9999s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Sending to the recipients</span></li></ol><p class="es-send-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="#4b0ea3" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="2" stroke="#4b0ea3" stroke-width="1.6"/></svg><span>Encrypted in transit and at rest.</span></p></div><footer class="es-send-foot"><div class="es-send-by"><span>Secured and delivered by</span><img src="img/yachtway-docusign-lockup.png" alt="YachtWay and DocuSign"></div><ul class="es-send-badges" aria-label="Security certifications"><li><img src="img/badge-soc2-type1.png" alt="SOC 2 Type I, powered by Vanta"></li><li><img src="img/badge-soc2-type2.png" alt="SOC 2 Type II, powered by Vanta"></li><li><img src="img/badge-gdpr.png" alt="GDPR, powered by Vanta"></li><li><img src="img/badge-underdefense-pentest.png" alt="Penetration tested by UnderDefense Cybersecurity"></li></ul><span class="es-send-audit">Independently audited by UnderDefense</span></footer></div><div class="sp" role="dialog" aria-modal="true" aria-label="EasySign dashboard">
+<script>document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const c=b.parentNode,was=b.classList.contains('on');if(c.classList.contains('one'))c.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.toggle('on',!was)}))</script><div id="sx" aria-hidden="true"><div class="es-send" id="sxsnd" role="status" aria-live="polite"><span class="es-send-sr">Sending for signature</span><div class="es-send-stage"><svg class="es-send-art" viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" > <g class="es-send-wires"> <path d="M228 150 C320 150 340 60 420 60" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> <path d="M228 150 C320 150 340 150 420 150" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> <path d="M228 150 C320 150 340 240 420 240" stroke="#dcdcde" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" /> </g> <path class="es-send-beam" style="--b:3.9s" d="M228 150 C320 150 340 60 420 60" /> <path class="es-send-beam" style="--b:4.4s" d="M228 150 C320 150 340 150 420 150" /> <path class="es-send-beam" style="--b:4.9s" d="M228 150 C320 150 340 240 420 240" /> <g class="es-send-doc"> <rect x="40" y="30" width="180" height="240" rx="14" fill="#ffffff" stroke="#e6dcf4" stroke-width="1.5" /> <rect x="60" y="52" width="44" height="8" rx="4" fill="#4b0ea3" /> <rect x="60" y="72" width="120" height="10" rx="5" fill="#22222d" opacity="0.85" /> <rect x="60" y="98" width="140" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="113" width="132" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="128" width="140" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="143" width="96" height="7" rx="3.5" fill="#e8e8ea" /> <rect x="60" y="162" width="124" height="7" rx="3.5" fill="#e8e8ea" /> <line x1="60" y1="230" x2="200" y2="230" stroke="#c1c1c4" stroke-width="1.5" stroke-linecap="round" /> <rect x="60" y="240" width="56" height="6" rx="3" fill="#e8e8ea" /> <g transform="translate(64 178) scale(0.5) translate(-500 -20)"> <path class="es-send-ink" d="M548.39 101.13 C547.76 101.13 546.48 100.87 544.75 100.32 C543.02 99.77 540.83 98.92 538.37 97.75 C533.44 95.4 527.44 91.74 521.87 86.47 C512.56 77.67 506.71 67.27 504.79 57.56 C502.86 47.85 504.85 38.83 511.22 32.81 C521.69 22.92 540.73 24.19 557.51 34.72 C563 38.2 568 42.5 574.02 48.96 C581.27 56.86 586.42 64.84 588.38 71.89 C589.36 75.42 589.53 78.71 588.77 81.65 C588 84.59 586.31 87.17 583.53 89.27 C579.37 92.42 574.65 92.18 570.2 90.44 C565.76 88.71 561.59 85.48 558.52 82.68" /> </g> </g> <g class="es-send-pen"> <g transform="scale(0.5) translate(-529.5 -76.5)"> <path d="M586.313 1.26342C588.05 -0.421141 590.812 -0.421141 592.549 1.26342L606.871 15.1511C607.74 15.9946 608.232 17.1544 608.232 18.366C608.232 19.5777 607.74 20.7383 606.871 21.5818L549.622 77.0964C548.789 77.9037 547.675 78.3561 546.515 78.3591L532.155 78.3972C530.963 78.4003 529.819 77.9276 528.976 77.0847C528.133 76.2418 527.661 75.0979 527.665 73.906L527.704 59.9802C527.707 58.7729 528.197 57.6176 529.064 56.7771L586.313 1.26342Z" fill="#ffffff" /> <path d="M586.313 1.26342C588.05 -0.421141 590.812 -0.421141 592.549 1.26342L606.871 15.1511C607.74 15.9946 608.232 17.1544 608.232 18.366C608.232 19.5777 607.74 20.7383 606.871 21.5818L549.622 77.0964C548.789 77.9037 547.675 78.3561 546.515 78.3591L532.155 78.3972C530.963 78.4003 529.819 77.9276 528.976 77.0847C528.133 76.2418 527.661 75.0979 527.665 73.906L527.704 59.9802C527.707 58.7729 528.197 57.6176 529.064 56.7771L586.313 1.26342ZM536.655 61.8923L536.633 69.4275L544.684 69.406L597.319 18.366L589.43 10.7165L536.655 61.8923Z" fill="#4b0ea3" /> <path d="M577.699 14.045C579.421 12.2696 582.257 12.2265 584.032 13.9483L593.786 23.4063C595.562 25.1281 595.606 27.9636 593.884 29.7393C592.162 31.515 589.327 31.5589 587.551 29.8369L577.796 20.378C576.021 18.656 575.978 15.8205 577.699 14.045Z" fill="#4b0ea3" /> </g> </g> <circle class="es-send-ring" cx="220" cy="38" r="24" stroke="#7e52be" stroke-width="2" /> <g class="es-send-lock"> <circle cx="220" cy="38" r="24" fill="#4b0ea3" /> <path d="M214.5 36 V32.5 a5.5 5.5 0 0 1 11 0 V36" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" /> <rect x="211" y="35.5" width="18" height="13" rx="3" fill="#ffffff" /> <circle cx="220" cy="42" r="1.8" fill="#4b0ea3" /> </g> <g> <circle cx="446" cy="60" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="54" r="6.5" fill="#4b0ea3" /> <path d="M434.5 72 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> <circle cx="446" cy="150" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="144" r="6.5" fill="#4b0ea3" /> <path d="M434.5 162 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> <circle cx="446" cy="240" r="26" fill="#f3edfb" stroke="#ccb9e7" stroke-width="1.5" /> <circle cx="446" cy="234" r="6.5" fill="#4b0ea3" /> <path d="M434.5 252 a11.5 9.5 0 0 1 23 0 Z" fill="#4b0ea3" /> </g> <g class="es-send-check" style="--c:0s"> <circle cx="466" cy="80" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 80.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> <g class="es-send-check" style="--c:.15s" > <circle cx="466" cy="170" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 170.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> <g class="es-send-check" style="--c:.3s" > <circle cx="466" cy="260" r="11" fill="#039855" stroke="#ffffff" stroke-width="2.5" /> <path d="M461 260.5 l3.2 3.2 l6 -6.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /> </g> </svg><div class="es-send-heads" aria-hidden="true"><div class="es-send-ha"><h1 class="es-send-title">Sending for signature</h1><p class="es-send-sub">Encrypted and delivered to each party.</p></div><div class="es-send-hb"><h2 class="es-send-title" id="sxdt">Sent for signature</h2><p class="es-send-sub">Thank you for choosing EasySign.</p></div></div><ol class="es-send-steps" aria-hidden="true"><li class="es-send-step es-send-step--1" style="--a:.6s;--d:2.7s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span id="sxp1">Preparing for signature</span></li><li class="es-send-step es-send-step--2" style="--a:3.1s;--d:3.9s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Applying encryption</span></li><li class="es-send-step es-send-step--3" style="--a:3.9s;--d:9999s"><span class="es-send-icon"><span class="es-send-p"></span><span class="es-send-a"><span class="es-send-spin"></span></span><span class="es-send-d"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Sending to the recipients</span></li></ol><p class="es-send-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="#4b0ea3" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="2" stroke="#4b0ea3" stroke-width="1.6"/></svg><span>Encrypted in transit and at rest.</span></p></div><footer class="es-send-foot"><div class="es-send-by"><span>Secured and delivered by</span><img src="img/yachtway-docusign-lockup.png" alt="YachtWay and DocuSign"></div><ul class="es-send-badges" aria-label="Security certifications"><li><img src="img/badge-soc2-type1.png" alt="SOC 2 Type I, powered by Vanta"></li><li><img src="img/badge-soc2-type2.png" alt="SOC 2 Type II, powered by Vanta"></li><li><img src="img/badge-gdpr.png" alt="GDPR, powered by Vanta"></li><li><img src="img/badge-underdefense-pentest.png" alt="Penetration tested by UnderDefense Cybersecurity"></li></ul><span class="es-send-audit">Independently audited by UnderDefense</span></footer></div><div class="sp" role="dialog" aria-modal="true" aria-label="EasySign dashboard">
 <aside class="sb"><div class="lg">EasySign<small>Powered by YachtWay</small></div>
  <p>Agreements</p>
  <a><i class="ri" style="-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2010.2%2012%203.5l9%206.7%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M5.3%209v10.5h13.4V9%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M9.6%2019.5v-6.2h4.8v6.2%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2010.2%2012%203.5l9%206.7%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M5.3%209v10.5h13.4V9%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M9.6%2019.5v-6.2h4.8v6.2%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E')"></i>Home</a>
@@ -1924,9 +1972,11 @@ One place.</h1>
  <div class="uf" id="sxuf"></div>
  <div class="ft"><span>Any document. Your file, your fields.</span><button class="go" data-n="0" id="sxun" disabled>Next: signers</button></div>
 </div>
+<div class="pane" data-p="w"><div class="wz"><nav class="wr" id="sxwr"></nav><div><p class="wh" id="sxwh"></p><div id="sxwb"></div>
+ <div class="ft"><button class="bk" id="sxwk">Back</button><button class="wk" data-n="0">Skip to signers</button><button class="go" id="sxwn">Next</button></div></div></div></div>
 <div class="pane" data-p="0">
  <div class="tg" id="sxot"><span>Signing order</span><button class="sw" id="sxo" aria-label="Signing order"></button></div>
- <div class="tg" id="sxrt"><span>Send for review first<em>Signers read it and comment before anyone signs.</em></span><button class="sw off" id="sxrv" aria-label="Send for review first"></button></div><div id="sxrp" hidden><span class="lf">Send the review to</span><div class="rg" id="sxrg"><button class="on">J. Whitaker</button><button>A. Moreno</button><button>Chris Patel</button></div></div>
+ <div class="tg" id="sxrt"><span>Send for review first<em>Signers read it and comment before anyone signs.</em></span><button class="sw off" id="sxrv" aria-label="Send for review first"></button></div><div id="sxrp" hidden><span class="lf">Send the review to</span><div class="rg" id="sxrg"><button class="on">Sam Rivera</button><button>Chris Patel</button><button>Taylor Brooks</button></div></div>
  <div class="tg" id="sxlt"><span>Listing terms<em>Asking price, listing type, commission and dates.</em></span><button class="sw off" id="sxlv" aria-label="Listing terms"></button></div>
  <div class="lt" id="sxlp" hidden>
   <div class="lc"><label class="lf" for="sxap">Asking price</label><div class="lpx"><i>$</i><input id="sxap" class="lin" inputmode="numeric" value="150,000"></div></div>
@@ -1955,7 +2005,7 @@ One place.</h1>
 const SX=document.getElementById('sx'),L=SX.querySelector('#sxl'),C=SX.querySelector('#sxc'),P=SX.querySelector('#sxp');
 const PAP=[['Marcus Elling','Buyer','#0a84ff'],['Chris Patel','Listing broker','#5856d6'],['Sam Rivera','Seller','#34c759'],['Dana Kim','Lender','#00c7be'],['Taylor Brooks','Co-buyer','#ff375f'],['Kate Morgan','Buyer broker','#ff9f0a']],LAP=[['Sam Rivera','Owner','#34c759'],['Chris Patel','Listing broker','#5856d6'],['Taylor Brooks','Co-owner','#ff375f']];let POOL=PAP;
 let S=[],F=[],used=0,ord=true,qs=false,rv=false,la=false,lt=false,LT={c:7,m:6,t:'Exclusive'},file=null,docName='',seq=['0','1','2'];
-const LB={u:'Upload',0:'Signers',1:'Place fields',2:'Send'},TT={u:'Upload the document.',0:'Who signs?',1:'Place each signature.',2:'Sent.'};
+const LB={u:'Upload',w:'Details',0:'Signers',1:'Place fields',2:'Send'},TT={u:'Upload the document.',0:'Who signs?',1:'Place each signature.',2:'Sent.'};
 const ini=n=>n.split(' ').map(w=>w[0]).join('');
 const grip='<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
 const pen='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
@@ -1964,17 +2014,46 @@ function rl(){L.classList.toggle('par',!ord);L.innerHTML=S.map((p,i)=>`<li class
 function rc(){C.innerHTML='<p>Drag a signer onto the page.</p>'+S.map((p,i)=>`<div class="chp" data-i="${i}" style="--c:${p[2]}"><i>${ini(p[0])}</i>${p[0].split(' ')[0]}<small>${F.filter(f=>f.p===p).length||''}</small></div>`).join('')}
 function rf(){P.querySelectorAll('.fd').forEach(e=>e.remove());F=F.filter(f=>S.includes(f.p));F.forEach((f,k)=>{const d=document.createElement('div');d.className='fd';d.dataset.k=k;d.style.cssText=`--c:${f.p[2]};left:${f.x}%;top:${f.y}%`;d.innerHTML=pen+f.p[0].split(' ')[0];P.appendChild(d)});SX.querySelector('#sxf').textContent=F.length+(F.length===1?' field placed':' fields placed');rc()}
 function go(n){n=String(n);if(n!=="2"&&typeof sxClr==="function")sxClr();const at=seq.indexOf(n);SX.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.dataset.p===n));SX.querySelectorAll('#sxst button').forEach((x,i)=>{x.classList.toggle('on',i===at);x.classList.toggle('dn',i<at)});
- SX.querySelector('#sxt').textContent=TT[n];SX.querySelector('#sxub').style.display=qs?'':'none';
+ SX.querySelector('#sxt').textContent=TT[n];const UB=SX.querySelector('#sxub');UB.style.display=qs||WS?'':'none';UB.dataset.n=qs?'u':'w';if(n==='w')wz(wi);
  if(n==='1')rf();if(n==='2'){const V=rv?'review':'signature';SX.querySelector('#sxe').textContent=(rv?'Sent for review':'Sent for signing')+' · YW-1001';SX.querySelector('#sxh2').textContent=qs?`${docName} is out for ${V}`:`The ${docName} for 2019 Azimut 68 Flybridge is out for ${V}`;SX.querySelector('#sxb2').dataset.n=qs?'1':'0';SX.querySelector('#sxs').textContent=ord?(rv?`${S[0][0].split(' ')[0]} reviews first. Signing opens once everyone has reviewed.`:`${S[0][0].split(' ')[0]} signs first. Each signer gets it when the one before is done.`):(rv?'Everyone can review it now. Signing opens once all have reviewed.':'Everyone gets it now.');SX.querySelector('#sxtp').textContent=qs?`${S.length} signers · ${F.length} fields`:`${S.length} signers`+(la&&lt&&ltEnd()?` · ${LT.c}% · ends ${ltEnd().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`:'');SX.querySelector('#sxq').innerHTML=S.map((p,i)=>`<span><b>${p[0]}<small> · ${p[1]}</small></b><em>${rv?'In review':ord&&i?'Signs after the '+S[i-1][1].toLowerCase():'Waiting to sign'}</em></span>`).join('');sxLive()}}
 function setFile(f){file=f;docName=f.name.replace(/\.[^.]+$/,'');SX.querySelector('#sxd').textContent=docName;SX.querySelector('#sxk').textContent='Quick Sign · YW-1001';const kb=f.size>1048576?(f.size/1048576).toFixed(1)+' MB':Math.max(1,Math.round(f.size/1024))+' KB';
  SX.querySelector('#sxuf').innerHTML=`<div class="fr"><span class="fi">${(f.name.split('.').pop()||'PDF').toUpperCase().slice(0,4)}</span><span><b>${f.name}</b><em>${kb} · Uploaded</em></span><button class="rm" aria-label="Remove file">&times;</button></div>`;SX.querySelector('#sxup').classList.add('has');SX.querySelector('#sxun').disabled=false}
 function clearFile(){file=null;SX.querySelector('#sxuf').innerHTML='';SX.querySelector('#sxup').classList.remove('has');SX.querySelector('#sxun').disabled=true;SX.querySelector('#sxfi').value=''}
-function open(doc){sxClr();qs=doc==='Sale Document';seq=qs?['u','0','1','2']:['0','2'];rv=false;SX.querySelector('#sxrv').classList.add('off');SX.querySelector('#sxrp').hidden=true;SX.querySelector('#sxrt').style.display=qs?'none':'';la=doc==='Listing Agreement';SX.querySelector('#sxlt').style.display=la?'':'none';lt=la;SX.querySelector('#sxlv').classList.toggle('off',!la);SX.querySelector('#sxlp').hidden=!la;POOL=la?LAP:PAP;SX.querySelector('#sxm').textContent=la?'Owner Sam Rivera · Listing broker Chris Patel':'$150,000 · Buyer Marcus Elling · Seller Sam Rivera';ltCalc();const N0=SX.querySelector('#sxn0');N0.dataset.n=qs?'1':'2';N0.textContent=qs?'Next: place fields':'Send for signing';docName=doc;S=POOL.slice(0,la?2:3).map(p=>[...p]);used=la?2:3;ord=!la;SX.querySelector('#sxot').style.display=la?'none':'';F=[{p:S[0],x:20,y:80},{p:S[1],x:52,y:80}];SX.querySelector('#sxo').classList.toggle('off',!ord);SX.querySelector('#sxk').textContent=(qs?'Quick Sign':doc)+' · YW-1001';SX.querySelectorAll('.sb a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===doc));SX.querySelector('#sxd').textContent=doc;clearFile();{const B=SX.querySelector('#sxsnd');clearTimeout(B._a);clearTimeout(B._b);B.classList.remove('on','is-sent')}SX.querySelector('#sxtst').classList.remove('on');SX.querySelector('#sxst').innerHTML=seq.map((k,i)=>`<button data-n="${k}"><i>${i+1}</i>${LB[k]}</button>`).join('');rl();go(seq[0]);SX.classList.add('open');SX.setAttribute('aria-hidden','false')}
+function open(doc){sxClr();qs=doc==='Sale Document';WS=WZ[doc]||null;wi=0;seq=qs?['u','0','1','2']:WS?['w','0','2']:['0','2'];rv=false;SX.querySelector('#sxrv').classList.add('off');SX.querySelector('#sxrp').hidden=true;SX.querySelector('#sxrt').style.display=qs?'none':'';la=doc==='Listing Agreement';SX.querySelector('#sxlt').style.display=la?'':'none';lt=la;SX.querySelector('#sxlv').classList.toggle('off',!la);SX.querySelector('#sxlp').hidden=!la;POOL=la?LAP:PAP;SX.querySelector('#sxm').textContent=la?'Owner Sam Rivera · Listing broker Chris Patel':'$150,000 · Buyer Marcus Elling · Seller Sam Rivera';ltCalc();const N0=SX.querySelector('#sxn0');N0.dataset.n=qs?'1':'2';N0.textContent=qs?'Next: place fields':'Send for signing';docName=doc;S=POOL.slice(0,la?2:3).map(p=>[...p]);used=la?2:3;ord=!la;SX.querySelector('#sxot').style.display=la?'none':'';F=[{p:S[0],x:20,y:80},{p:S[1],x:52,y:80}];SX.querySelector('#sxo').classList.toggle('off',!ord);SX.querySelector('#sxk').textContent=(qs?'Quick Sign':doc)+' · YW-1001';SX.querySelectorAll('.sb a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===doc));SX.querySelector('#sxd').textContent=doc;clearFile();{const B=SX.querySelector('#sxsnd');clearTimeout(B._a);clearTimeout(B._b);B.classList.remove('on','is-sent')}SX.querySelector('#sxtst').classList.remove('on');SX.querySelector('#sxst').innerHTML=seq.map((k,i)=>`<button data-n="${k}"><i>${i+1}</i>${LB[k]}</button>`).join('');rl();go(seq[0]);SX.classList.add('open');SX.setAttribute('aria-hidden','false')}
+// prefilled wizard data: labels and steps copied from the product (purchase-agreement/constants.ts and the offer flow)
+const VES=[['Vessel information',[['Make','Azimut'],['Model','68 Flybridge'],['New or Pre-owned',['New','Pre-owned'],1],['Vessel Location','Fort Lauderdale, FL'],['Year','2019'],['Hull or Production Number','XAX68019B919'],['Length Overall','68 ft'],['Price','$150,000'],['Currency','USD']]],['Engines',[['Engine Make','MAN'],['Engine Model','V12-1400'],['Drive Type','Inboard'],['Fuel Type','Diesel'],['Number of Engines','2'],['Horsepower per Engine','1,400']]]],
+BUY=[['Buyer Info',[['First Name','Marcus'],['Last Name','Elling'],['Email','marcus.elling@mail.com'],['Phone number','(305) 555-0142'],['ID Number','•••• 4821'],['Date of Birth','Mar 14, 1979'],['Street Address','1200 Brickell Ave, Miami, FL 33131',1]]],['Co-buyer',[['First Name','Taylor'],['Last Name','Brooks'],['Email','taylor.brooks@mail.com']]],['Buyer’s Broker',[['First Name','Kate'],['Last Name','Morgan'],['Email','kate@morganyachts.com'],['Company Name','Morgan Yacht Group'],['Brokerage','Morgan Yacht Group, Miami']]]],
+SEL=[['Seller Info',[['First Name','Sam'],['Last Name','Rivera'],['Email','sam.rivera@mail.com'],['Phone number','(954) 555-0177'],['ID Number','•••• 1937'],['Date of Birth','Jul 2, 1971']]],['Listing Broker',[['First Name','Chris'],['Last Name','Patel'],['Email','chris@patelyachts.com'],['Phone number','(954) 555-0110'],['Company Name','Patel Yachts']]],['Pulled from the Listing Agreement',[['Listing broker','Chris Patel',2],['Vessel location','Fort Lauderdale, FL',2],['Listing price','$150,000',2]]]],
+YN=['Yes','No'],PDF='<div class="wa"><span><b>PDF</b>Preview the full PDF</span><span>Download the unsigned PDF</span></div>';
+const WZ={'Purchase Agreement':[
+ {l:'Vessel',m:'Deal info',h:'Identify the vessel, propulsion, and included equipment.',p:[...VES,['Stock or on order',[['Is the vessel already in inventory?',['Yes, in inventory','No, on order'],0]]],['Purchase price',[['Is the purchase price fixed?',['Yes, fixed','No, subject to change'],0]]]]},
+ {l:'Buyer',m:'Deal info',h:'Buyer, optional co-buyer, and the buyer’s broker.',p:BUY},
+ {l:'Seller',m:'Deal info',h:'Seller ownership, masking, and the Listing Broker.',p:SEL},
+ {l:'Financials',m:'Deal terms',h:'Set price, financing, discounts, taxes, fees, and deposits.',p:[['Discount',[['Price Before Discount','$155,000'],['Discount Amount','$5,000'],['Percent (%)','3.2'],['Price After Discount','$150,000',2]]],['Vessel State Sales Tax',[['State','Florida'],['Rate','6%'],['Sales Tax','$9,000']]],['Fees',[['Documentation Fee','$495']]],['Deposits',[['Deposit','$15,000'],['Due','Within 3 business days']]],['Price Breakdown',[['Total purchase price','$159,495',2],['Balance due at closing','$144,495',2]]]]},
+ {l:'Registration & Warranty',m:'Deal terms',h:'Set registration, documentation, warranties, and accessories.',p:[['Vessel Registration Info',[['Street Address','1200 Brickell Ave'],['City','Miami'],['State','FL'],['ZIP or Postal Code','33131'],['Country','USA'],['Hailing Port','Miami, FL'],['New Vessel Name','Second Wind'],['USCG Official Number','1298457']]],['Warranties',[['General',YN,1],['Engine and Hull Warranty',YN,0]]],['Accessories',[['Vessel with a Tender',YN,0],['Vessel with a Trailer',YN,1]]]]},
+ {l:'Contingencies & Dates',m:'Deal terms',h:'Set inspections, delivery, and closing dates.',p:[['Delivery and Dates',[['Contract Date','Dec 1, 2026'],['Acceptance or Rejection Date','Dec 3, 2026'],['Estimated Delivery Date','Jan 15, 2027'],['Closing Date','Jan 12, 2027'],['Closing City and State','Fort Lauderdale, FL'],['Time Zone','Eastern']]],['Inspections',[['Are there contingencies?',YN,0],['Sea Trial',YN,0],['Marine Survey',YN,0],['Mechanical Inspection',YN,0]]],['Financing',[['Contingent on financing',YN,0],['Amount','$105,000'],['Representative’s Name','Dana Kim'],['Phone Number','(305) 555-0199']]]]},
+ {l:'Trade-In',m:'Closing agent · the money',h:'Record optional trade-in value, payoff, and registration.',p:[['Trade-In',[['Is there a trade-in?',YN,1]]]]},
+ {l:'Additional Remarks',m:'Signing',h:'Optional remarks and any documents to send with the agreement.',p:[['Additional Remarks',[['Remarks','Seller delivers the vessel with full fuel and every spare part listed in the survey.',3]]],['Attach other documents',[['Files','<div class="wa"><span><b>PDF</b>Survey report.pdf</span><span><b>PDF</b>Spec sheet.pdf</span></div>',4]]]]},
+ {l:'Review & Sign',m:'Signing',h:'Review the agreement, resolve issues, and prepare signing.',p:[['Purchase Agreement PDF',[['',PDF,4]]],['Who Will Be Signing: buyer side',[['Buyer','Marcus Elling'],['Co-buyer','Taylor Brooks'],['Buyer’s Broker','Kate Morgan']]],['Who Will Be Signing: seller side',[['Seller','Sam Rivera'],['Listing Broker','Chris Patel']]],['Internal review',[['Send to your office for review first?',YN,1]]]]}],
+'Offer to Purchase':[
+ {l:'Vessel',h:'Identify the vessel, propulsion, and included equipment.',p:VES},
+ {l:'Buyer',h:'Add the buyer, optional co-buyer, and buyer representative.',p:BUY},
+ {l:'Seller',h:'Add seller ownership and listing-side routing.',p:SEL},
+ {l:'Offer Price',h:'Set price, deposit, and every controlling date.',p:[['Offer Price',[['Currency','USD'],['Purchase Price','$150,000'],['Less Deposit','$15,000'],['Less Trade Allowance','$0'],['Net Cash Difference','$135,000',2]]],['Dates',[['Offer Date','Dec 1, 2026'],['Seller Accept','Dec 3, 2026'],['Buyer Accept or Reject Date','Dec 4, 2026'],['Closing Date','Jan 12, 2027']]],['Delivery and Additional Terms',[['Delivery Location','Fort Lauderdale, FL',1],['Additional Terms','Offer includes the tender and all electronics on board.',3]]]]},
+ {l:'Contingencies',h:'Define financing and the inspections that apply.',p:[['Financing',[['Contingent on financing',YN,0],['Amount','$105,000'],['Representative’s Name','Dana Kim']]],['Inspections',[['Sea Trial',YN,0],['Marine Survey',YN,0],['Mechanical Inspection',YN,0]]]]},
+ {l:'Review',h:'Check the offer PDF, who signs it, and who receives it.',p:[['Offer PDF',[['',PDF,4]]],['Who Signs: buyer side',[['Buyer','Marcus Elling'],['Buyer’s Broker','Kate Morgan']]],['Who Receives the Offer: seller side',[['Listing Broker','Chris Patel'],['Seller','Sam Rivera']]]]},
+ {l:'Send',h:'Add a note, then send the offer to the buyer to sign.',p:[['Note',[['Message to the buyer','Marcus, here is the offer on the Azimut 68. Sign when you are ready.',3]]]]}]};
+let WS=null,wi=0;
+const wf=f=>Array.isArray(f[1])?`<div class="wf ww"><label class="lf">${f[0]}</label><div class="rg">${f[1].map((o,i)=>`<button type="button"${i===f[2]?' class="on"':''}>${o}</button>`).join('')}</div></div>`:f[2]===4?`<div class="wf ww">${f[1]}</div>`:`<div class="wf${f[2]&&f[2]!==2?' ww':''}"><label class="lf">${f[0]}</label><div class="lin wv${f[2]===2?' ro':''}${f[2]===3?' tx':''}">${f[1]}</div></div>`;
+function wz(i){wi=i;const st=WS[i];let m='';SX.querySelector('#sxwr').innerHTML=WS.map((x,k)=>{const h=x.m&&x.m!==m?`<p>${m=x.m}</p>`:'';return h+`<button data-w="${k}" class="${k===i?'on':k<i?'dn':''}"><i>${k+1}</i>${x.l}</button>`}).join('');
+ SX.querySelector('#sxt').textContent=st.l;SX.querySelector('#sxwh').textContent=st.h;SX.querySelector('#sxwb').innerHTML=st.p.map(([t,fs])=>`<section class="wp"><h5>${t}</h5><div class="wg">${fs.map(wf).join('')}</div></section>`).join('');
+ const B=SX.querySelector('#sxwk'),N=SX.querySelector('#sxwn'),nx=WS[i+1];B.style.visibility=i?'':'hidden';B.dataset.w=i-1;if(nx){N.dataset.w=i+1;delete N.dataset.n;N.textContent='Next: '+nx.l}else{delete N.dataset.w;N.dataset.n='0';N.textContent='Next: signers'}SX.querySelector('.mn').scrollTop=0}
+SX.addEventListener('click',e=>{const b=e.target.closest('.wz .rg button');if(b)b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});
 let SXT=[];function sxClr(){SXT.forEach(clearTimeout);SXT=[]}
-function sxLive(){sxClr();if(rv)return;const E=[...SX.querySelectorAll('#sxq em')],t=()=>new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),dt=()=>new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}),at=(f,ms)=>SXT.push(setTimeout(f,ms)),fin=()=>{SX.querySelector('#sxe').textContent='Fully signed · YW-1001';SX.querySelector('#sxs').textContent='Everyone has signed.';const h=SX.querySelector('#sxh2');h.textContent=h.textContent.replace(/is out for signature$/,'is fully signed')};let done=0;const run=(i,d)=>{at(()=>{E[i].className='op';E[i].textContent='Opened, not signed yet'},d+5000);at(()=>{E[i].className='sg';E[i].textContent='Signed '+dt();done++;if(ord&&E[i+1]){E[i+1].textContent='Waiting to sign';run(i+1,0)}if(done===E.length)fin()},d+7000)};if(ord)run(0,0);else E.forEach((_,i)=>run(i,i*1000))}
+function sxLive(){sxClr();if(rv){const E=[...SX.querySelectorAll('#sxq em')];E.forEach((e,i)=>SXT.push(setTimeout(()=>{e.className='sg';e.textContent='Approved';if(i===E.length-1){SX.querySelector('#sxe').textContent='Reviewed · YW-1001';SX.querySelector('#sxs').textContent='Everyone has approved. Signing is open.';const h=SX.querySelector('#sxh2');h.textContent=h.textContent.replace(/is out for review$/,'is approved')}},3000+i*1500)));return}const E=[...SX.querySelectorAll('#sxq em')],t=()=>new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),dt=()=>new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}),at=(f,ms)=>SXT.push(setTimeout(f,ms)),fin=()=>{SX.querySelector('#sxe').textContent='Fully signed · YW-1001';SX.querySelector('#sxs').textContent='Everyone has signed.';const h=SX.querySelector('#sxh2');h.textContent=h.textContent.replace(/is out for signature$/,'is fully signed')};let done=0;const run=(i,d)=>{at(()=>{E[i].className='op';E[i].textContent='Opened, not signed yet'},d+5000);at(()=>{E[i].className='sg';E[i].textContent='Signed '+dt();done++;if(ord&&E[i+1]){E[i+1].textContent='Waiting to sign';run(i+1,0)}if(done===E.length)fin()},d+7000)};if(ord)run(0,0);else E.forEach((_,i)=>run(i,i*1000))}
 function close(){sxClr();SX.classList.remove('open');SX.setAttribute('aria-hidden','true')}
-document.querySelectorAll('.keep .kc').forEach(c=>{c.addEventListener('click',e=>{if(document.body.classList.contains('editing'))return;e.stopPropagation();open(c.dataset.doc)});c.addEventListener('keydown',e=>{if(e.key==='Enter'){e.stopPropagation();open(c.dataset.doc)}})});
-SX.addEventListener('click',e=>{e.stopPropagation();if(e.target===SX||e.target.closest('[data-x]'))return close();if(SX.querySelector('#sxsnd').classList.contains('on'))return;if(e.target.closest('.rm'))return clearFile();const n=e.target.closest('[data-n]');if(n&&!n.disabled){if(n.dataset.n!=='u'&&qs&&!file)return go('u');if(n.dataset.n==='2'&&!e.target.closest('.dn')&&SX.querySelector('[data-p="2"].on')===null)return send();go(n.dataset.n)}});
+document.querySelectorAll('.keep .kc[data-go]').forEach(c=>c.addEventListener('keydown',e=>{if(e.key==='Enter')c.click()}));document.querySelectorAll('.keep .kc[data-doc]').forEach(c=>{c.addEventListener('click',e=>{if(document.body.classList.contains('editing'))return;e.stopPropagation();open(c.dataset.doc)});c.addEventListener('keydown',e=>{if(e.key==='Enter'){e.stopPropagation();open(c.dataset.doc)}})});
+SX.addEventListener('click',e=>{e.stopPropagation();if(e.target===SX||e.target.closest('[data-x]'))return close();if(SX.querySelector('#sxsnd').classList.contains('on'))return;if(e.target.closest('.rm'))return clearFile();const w=e.target.closest('[data-w]');if(w)return wz(+w.dataset.w);const n=e.target.closest('[data-n]');if(n&&!n.disabled){if(n.dataset.n!=='u'&&qs&&!file)return go('u');if(n.dataset.n==='2'&&!e.target.closest('.dn')&&SX.querySelector('[data-p="2"].on')===null)return send();go(n.dataset.n)}});
 // upload
 const FI=SX.querySelector('#sxfi'),UP=SX.querySelector('#sxup');
 FI.addEventListener('change',()=>{if(FI.files[0])setFile(FI.files[0])});
@@ -1983,7 +2062,7 @@ SX.querySelector('#sxsm').onclick=()=>setFile({name:'Bill of Sale.pdf',size:2480
 ['dragleave','drop'].forEach(t=>UP.addEventListener(t,e=>{e.preventDefault();UP.classList.remove('ov')}));
 UP.addEventListener('drop',e=>{const f=e.dataTransfer&&e.dataTransfer.files[0];if(f)setFile(f)});
 // send: same bar, pill and toast as EasySign
-function send(){const B=SX.querySelector('#sxsnd'),T=SX.querySelector('#sxtst'),G=SX.querySelector(qs?'#sxgo':'#sxn0'),g0=G.textContent,R=B.querySelector('.es-send-sr');B.classList.remove('is-sent');void B.offsetWidth;R.textContent='Sending for signature';B.classList.add('on');void B.offsetWidth;B.getAnimations({subtree:true}).forEach(a=>a.playbackRate=2);G.classList.add('ld');G.textContent='Sending';clearTimeout(B._a);clearTimeout(B._b);B._a=setTimeout(()=>{B.classList.add('is-sent');R.textContent='Document sent for signature'},2900);B._b=setTimeout(()=>{B.classList.remove('on','is-sent');G.classList.remove('ld');G.textContent=g0;go('2');SX.querySelector('#sxtm').textContent=`${rv?'Sent for review':'Sent for signing'} · ${S.length} signers`;T.classList.remove('on');void T.offsetWidth;T.classList.add('on');clearTimeout(T._t);T._t=setTimeout(()=>T.classList.remove('on'),3600)},5000)}
+function send(){const B=SX.querySelector('#sxsnd'),T=SX.querySelector('#sxtst'),G=SX.querySelector(qs?'#sxgo':'#sxn0'),g0=G.textContent,R=B.querySelector('.es-send-sr');B.classList.remove('is-sent');void B.offsetWidth;const V=rv?'review':'signature';R.textContent='Sending for '+V;SX.querySelector('#sxdt').textContent='Sent for '+V;SX.querySelector('#sxp1').textContent='Preparing for '+V;B.querySelector('h1.es-send-title').textContent='Sending for '+V;B.classList.add('on');void B.offsetWidth;B.getAnimations({subtree:true}).forEach(a=>a.playbackRate=2);G.classList.add('ld');G.textContent='Sending';clearTimeout(B._a);clearTimeout(B._b);B._a=setTimeout(()=>{B.classList.add('is-sent');R.textContent='Document sent for '+V},2900);B._b=setTimeout(()=>{B.classList.remove('on','is-sent');G.classList.remove('ld');G.textContent=g0;go('2');SX.querySelector('#sxtm').textContent=`${rv?'Sent for review':'Sent for signing'} · ${S.length} signers`;T.classList.remove('on');void T.offsetWidth;T.classList.add('on');clearTimeout(T._t);T._t=setTimeout(()=>T.classList.remove('on'),3600)},5000)}
 SX.querySelector('#sxgo').onclick=e=>{e.stopPropagation();if(!SX.querySelector('#sxsnd').classList.contains('on'))send()};
 ['wheel','touchstart','touchmove','touchend'].forEach(t=>SX.addEventListener(t,e=>e.stopPropagation(),{passive:true}));
 window.addEventListener('keydown',e=>{if(!SX.classList.contains('open'))return;e.stopImmediatePropagation();if(e.key==='Escape')close()},true);
@@ -2100,7 +2179,7 @@ function draw(){
  scr.querySelectorAll('.ps.act .bar i,.ps:last-child .bar i').forEach(b=>requestAnimationFrame(()=>requestAnimationFrame(()=>b.style.width='100%')));
  side.classList.toggle('dl',S.step==='b-filed');side.innerHTML=S.step==='b-filed'?deal():panel();
 }
-function to(st){S.step=st;miss='';draw()}
+function to(st){S.step=st;miss='';draw();nxt(st==='b-filed','docreq')}
 const PV=document.createElement('div');PV.id='drPv';PV.setAttribute('role','dialog');PV.setAttribute('aria-modal','true');document.body.appendChild(PV);let pvK=-1;
 function pvDoc(i){
  const who=p()[0]||'Name hidden until fully signed',x=d(),mk='<span class="pvmk">SAMPLE</span>';
